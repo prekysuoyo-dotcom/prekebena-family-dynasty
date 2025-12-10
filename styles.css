@@ -1,32 +1,20 @@
-/* Reset & Base */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family: 'Segoe UI', sans-serif; line-height:1.6; color:#333; background:#f4f4f9; }
+/* Forms */
+.forms { display:flex; flex-wrap:wrap; gap:2rem; margin:2rem 0; }
+.form-card { flex:1 1 45%; background:#fff; padding:1.5rem; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+form input, form button { display:block; width:100%; margin:0.5rem 0; padding:0.5rem; }
 
-/* Container */
-.container { max-width:1200px; margin:0 auto; padding:1rem; }
+/* Admin Table */
+table { width:95%; margin:1rem auto; border-collapse:collapse; }
+th, td { padding:0.5rem; text-align:center; border:1px solid #ccc; }
+img { border-radius:50%; }
 
-/* Header */
-header { background:#005f73; color:#fff; text-align:center; padding:3rem 1rem; }
-header h1 { font-size:2rem; margin-bottom:0.5rem; }
-header h2 { font-size:1.2rem; font-weight:400; margin-bottom:1rem; }
-header p { font-size:1rem; }
-
-/* Info Cards (Mission & Vision) */
-.info { display:flex; flex-wrap:wrap; gap:1rem; margin:2rem 0; }
-.info .card { flex:1 1 45%; background:#fff; padding:1.5rem; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-
-/* Core Values */
-.core-values { background:#e9f1f7; padding:2rem 1rem; border-radius:10px; margin:2rem 0; }
-.core-values h3 { text-align:center; color:#005f73; margin-bottom:1rem; }
-.core-values ul { list-style-type:disc; padding-left:2rem; }
-
-/* Footer */
-footer { background:#001219; color:#fff; text-align:center; padding:1.5rem 1rem; margin-top:2rem; }
-footer a { color:#94d2bd; text-decoration:none; }
+/* WhatsApp icon */
 .whatsapp-icon { width:24px; height:24px; vertical-align:middle; margin-right:0.5rem; }
 
 /* Responsive */
-@media (max-width:768px){
-  .info { flex-direction:column; }
-  .info .card { flex:1 1 100%; }
+@media(max-width:768px){
+  .forms { flex-direction:column; }
+  .form-card { flex:1 1 100%; }
+  table, thead, tbody, th, td, tr { display:block; }
+  td { text-align:left; padding:0.5rem; border:none; }
 }
