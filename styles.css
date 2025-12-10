@@ -1,65 +1,36 @@
-* { box-sizing:border-box; margin:0; padding:0; }
-body { font-family:'Poppins',sans-serif; color:#333; line-height:1.6; }
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Segoe UI', sans-serif; line-height:1.6; color:#333; background:#f4f4f9; }
 
-/* TOP BANNER */
-.top-banner { background:#0066cc; color:#fff; text-align:center; padding:12px; font-weight:600; font-size:1.2rem; }
+/* Containers */
+.container { max-width:1200px; margin:0 auto; padding:1rem; }
 
-/* NAVBAR */
-.navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
-.logo { height:50px; margin-right:10px; max-width:100%; height:auto; }
-.brand-name { font-weight:600; font-size:1.3rem; }
-.nav-buttons button { margin-left:10px; padding:8px 16px; border-radius:6px; border:none; cursor:pointer; }
-.btn-primary { background:#0066cc; color:#fff; }
-.btn-outline { background:#fff; color:#0066cc; border:2px solid #0066cc; }
-.btn-primary:hover { background:#004a99; }
-.btn-outline:hover { background:#004a99; color:#fff; }
+/* Header */
+header { background:#005f73; color:#fff; text-align:center; padding:3rem 1rem; }
+header h1 { font-size:2rem; margin-bottom:0.5rem; }
+header h2 { font-size:1.2rem; font-weight:400; margin-bottom:1rem; }
+header p { font-size:1rem; }
 
-/* HERO */
-.hero { background: linear-gradient(135deg,#0066cc,#00aaff); color:white; text-align:center; padding:80px 20px; }
-.hero-content h1 { font-size:2.5rem; margin-bottom:15px; }
-.hero-subtitle { font-size:1.2rem; margin-bottom:25px; }
-.btn-large { padding:12px 25px; font-size:1.1rem; }
+/* Intro */
+.intro { text-align:center; margin:2rem 0; }
+.intro h2 { font-size:1.8rem; color:#0a9396; margin-bottom:0.5rem; }
+.intro .tagline { font-size:1.2rem; color:#94d2bd; margin-bottom:1rem; }
 
-/* MISSION & VISION */
-.mission-vision { display:flex; flex-wrap:wrap; gap:30px; max-width:1000px; margin:auto; padding:40px 20px; }
-.mission-vision .box { flex:1 1 300px; background:#f5f5f5; padding:20px; border-radius:10px; }
-.mission-vision h2 { color:#0066cc; margin-bottom:10px; }
+/* Mission & Vision */
+.mission-vision { display:flex; flex-wrap:wrap; gap:1rem; margin:2rem 0; }
+.mission-vision .card { flex:1 1 45%; background:#fff; padding:1.5rem; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
 
-/* CORE VALUES */
-.core-values { text-align:center; padding:50px 20px; }
-.core-values h2 { margin-bottom:30px; color:#0066cc; }
-.values-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
-.value-card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.1); }
-.value-card h3 { color:#0066cc; margin-bottom:10px; }
+/* Core Values */
+.core-values { background:#e9f1f7; padding:2rem 1rem; border-radius:10px; margin:2rem 0; }
+.core-values h3 { text-align:center; color:#005f73; margin-bottom:1rem; }
+.core-values ul { list-style-type:disc; padding-left:2rem; }
 
-/* ACCORDION */
-.accordion-section { max-width:900px; margin:auto; padding:40px 20px; }
-.accordion { background:#0066cc; color:#fff; cursor:pointer; padding:14px; width:100%; border:none; text-align:left; border-radius:6px; margin-bottom:5px; outline:none; font-size:16px; }
-.accordion.active, .accordion:hover { background:#004a99; }
-.panel { max-height:0; overflow:hidden; transition:max-height 0.3s ease-out; padding:0 15px; background:#f1f1f1; border-radius:0 0 6px 6px; margin-bottom:15px; }
+/* Footer */
+footer { background:#001219; color:#fff; text-align:center; padding:1.5rem 1rem; margin-top:2rem; }
+footer a { color:#94d2bd; text-decoration:none; }
 
-/* CTA */
-.cta-section { text-align:center; padding:50px 20px; background:#00aaff; color:#fff; }
-.cta-section h2 { margin-bottom:20px; }
-.cta-section button:hover { background:#004a99; }
-
-/* FOOTER */
-.footer { text-align:center; padding:25px; background:#fff; border-top:1px solid #ddd; }
-.footer .footer-slogan { color:#0066cc; font-weight:600; margin-bottom:10px; }
-.whatsapp-icon { width:50px; max-width:100%; height:auto; }
-
-/* RESPONSIVE */
-@media(max-width:768px){
-  .navbar { flex-direction:column; align-items:center; }
-  .nav-buttons { margin-top:10px; }
-  .logo-brand { justify-content:center; margin-bottom:10px; }
+/* Responsive */
+@media (max-width:768px){
   .mission-vision { flex-direction:column; }
-  .hero-content h1{font-size:2rem;}
-}
-@media(max-width:480px){
-  .hero{padding:60px 15px;}
-  .hero-content h1{font-size:1.8rem;}
-  .hero-content p{font-size:1rem;}
-  .btn-large{width:100%;}
-  .values-grid{grid-template-columns:1fr; gap:15px;}
+  .mission-vision .card { flex:1 1 100%; }
 }
