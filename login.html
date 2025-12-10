@@ -1,34 +1,67 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Login - Prekebena Family Dynasty</title>
-  <link rel="stylesheet" href="styles.css" />
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body { font-family: "Inter", sans-serif; background: #f8f9fc; margin:0; padding:0; }
+    .container { max-width: 400px; margin: 50px auto; background:white; padding:30px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+    h2 { text-align:center; color:#022c43; margin-bottom:20px; }
+    input { width:100%; padding:10px; margin:8px 0; border-radius:6px; border:1px solid #ccc; }
+    button { width:100%; padding:12px; background:#ffcf33; border:none; border-radius:6px; font-weight:bold; cursor:pointer; margin-top:10px; }
+    button:hover { background:#e6b800; }
+    .message { text-align:center; margin-top:10px; font-weight:bold; }
+    a { display:block; text-align:center; margin-top:10px; color:#022c43; text-decoration:none; }
+  </style>
 </head>
 <body>
-  <main class="card centered">
-    <h2>Member Login</h2>
 
-    <form id="loginForm">
-      <label>Email
-        <input type="email" id="loginEmail" name="email" required />
-      </label>
+<div class="container">
+  <h2>Login</h2>
+  <input type="email" id="email" placeholder="Email" required>
+  <input type="password" id="password" placeholder="Password" required>
+  <button id="loginBtn">Login</button>
+  <div class="message" id="message"></div>
+  <a href="registration.html">Don't have an account? Register</a>
+</div>
 
-      <label>Password
-        <input type="password" id="loginPassword" name="password" required />
-      </label>
+<script>
+  const webAppURL = "YOUR_GOOGLE_SHEET_WEBAPP_URL"; // replace with your web app URL
 
-      <button type="submit" class="btn">Login</button>
-    </form>
+  document.getElementById("loginBtn").addEventListener("click", async () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-    <p style="text-align:center; margin-top:12px;">
-      Don't have an account? <a href="registration.html">Register here</a><br>
-      <a href="index.html">← Back to Home</a>
-    </p>
-  </main>
+    if(!email || !password){
+      document.getElementById("message").innerText = "Please enter email and password.";
+      return;
+    }
 
-  <script src="script.js"></script>
+    const params = new URLSearchParams({
+      action: "login",
+      email, password
+    });
+
+    try{
+      const res = await fetch(`${webAppURL}?${params}`, { method:"POST" });
+      const data = await res.json();
+
+      if(data.status === "success"){
+        document.getElementById("message").innerText = `Welcome ${data.name}!`;
+        // Redirect to profile/dashboard page after login
+        // window.location.href = "membership.html";
+      } else {
+        document.getElementById("message").innerText = "Invalid email or password.";
+      }
+    }catch(err){
+      document.getElementById("message").innerText = "Error connecting to server.";
+      console.error(err);
+    }
+  });
+</script>
+
 </body>
 </html>
