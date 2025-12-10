@@ -1,36 +1,44 @@
-/* HERO BANNER */
-.hero-banner {
-  background: #007bff;
-  color: white;
-  text-align: center;
-  padding: 60px 20px;
-  border-radius: 0 0 20px 20px;
-}
+/* Reset & Base */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family:'Poppins', sans-serif; line-height:1.5; color:#333; }
 
-.logo-hero {
-  height: 80px;
-  margin-bottom: 20px;
+/* NAVBAR */
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
-
-.hero-buttons button {
-  margin: 10px 10px;
-  padding: 12px 24px;
-  font-size: 16px;
-  border-radius: 6px;
+.logo-img { height:45px; margin-right:10px; vertical-align: middle; }
+.brand { font-size: 20px; font-weight:600; vertical-align: middle; }
+.nav-right button {
+  margin-left: 10px;
+  padding: 8px 16px;
   border: none;
+  border-radius: 5px;
   cursor: pointer;
 }
+.btn-primary { background:#0066cc; color:white; }
+.btn-outline { background:transparent; border:2px solid #0066cc; color:#0066cc; }
 
-.hero-buttons button:first-child {
-  background: transparent;
-  border: 2px solid white;
+/* HERO */
+.hero {
+  background: #0066cc;
   color: white;
+  text-align: center;
+  padding: 80px 20px;
 }
+.hero h1 { font-size: 2.5rem; margin-bottom: 15px; }
+.hero .hero-tagline { font-size:1.2rem; margin-bottom: 25px; }
+.btn-large { padding: 12px 24px; font-size:1.1rem; border-radius:6px; }
 
-.hero-buttons button:last-child {
-  background: white;
-  color: #007bff;
-}
+/* ABOUT SECTION */
+.about { background:#f7f9fb; padding: 40px 20px; }
+.about-inner { max-width: 800px; margin: auto; }
+.about h2 { font-size:1.8rem; color: #0066cc; margin-bottom:15px; }
+.about p { margin-bottom: 12px; }
 
 /* CARDS SECTION */
 .cards-section {
@@ -39,20 +47,30 @@
   justify-content: center;
   gap: 20px;
   padding: 40px 20px;
-  background: #f5f5f5;
 }
-
 .card {
   background: white;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-  max-width: 300px;
-  flex: 1 1 250px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  flex: 1 1 220px;
+  max-width: 260px;
   text-align: center;
 }
+.card h3 { color: #0066cc; margin-bottom: 10px; }
+.card p { font-size: 0.95rem; line-height: 1.4; }
 
-.card h2 {
-  color: #007bff;
-  margin-bottom: 15px;
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  background: #ffffff;
+  border-top: 1px solid #ddd;
+}
+.whatsapp-img { width: 50px; }
+
+/* RESPONSIVENESS */
+@media (max-width: 600px) {
+  .hero h1 { font-size: 1.8rem; }
+  .cards-section { flex-direction: column; align-items: center; }
 }
