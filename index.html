@@ -1,72 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Prekebena Family Dynasty</title>
   <link rel="stylesheet" href="styles.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <nav class="nav">
-    <div class="nav-left">
-      <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Prekebena Logo" class="logo-img">
-      <span class="brand">Prekebena Family Dynasty</span>
-    </div>
-    <div class="nav-right">
-      <button class="btn-outline" onclick="openLogin()">Login</button>
-      <button class="btn-primary" onclick="openSignup()">Create Account</button>
-    </div>
-  </nav>
-
-  <!-- HERO / WELCOME SECTION -->
+  <!-- HERO SECTION -->
   <header class="hero">
     <div class="hero-inner">
+      <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Prekebena Logo" class="logo-hero">
       <h1>Welcome to Prekebena Family Dynasty</h1>
-      <p class="hero-tagline">United we stand, prosperous we grow.</p>
-      <button class="btn-primary btn-large" onclick="openSignup()">Join the Dynasty</button>
+      <p class="tagline">United we stand, prosperous we grow</p>
+      <div class="hero-buttons">
+        <button onclick="openLogin()">Login</button>
+        <button onclick="openSignup()">Create Account</button>
+      </div>
     </div>
   </header>
 
-  <!-- ABOUT / MISSION‑VISION SECTION -->
-  <section class="about">
-    <div class="about-inner">
-      <h2>Our Mission & Vision</h2>
-      <p><strong>Mission:</strong> To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to our collective well‑being and sustainable development.</p>
-      <p><strong>Vision:</strong> To be the leading family name in our region, recognised for unity, faith, financial resilience, and active participation in building a prosperous future.</p>
-    </div>
-  </section>
-
-  <!-- VALUES CARDS SECTION -->
+  <!-- MISSION / VISION CARDS -->
   <section class="cards-section">
     <div class="card">
-      <h3>Love & Respect</h3>
-      <p>Treat every member with dignity.</p>
+      <h3>Mission</h3>
+      <p>To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to the collective well-being and sustainable development of the family.</p>
     </div>
     <div class="card">
-      <h3>Integrity</h3>
-      <p>Honest dealings in all financial and relational matters.</p>
+      <h3>Vision</h3>
+      <p>To be the leading family name in our region, recognised for unity, love of God, financial resilience, and active participation in shaping a prosperous future.</p>
     </div>
     <div class="card">
-      <h3>Collaboration</h3>
-      <p>Work together across ages and branches.</p>
+      <h3>Motto</h3>
+      <p>Together we rise, together we thrive.</p>
     </div>
     <div class="card">
-      <h3>Commitment & Growth</h3>
-      <p>Fulfil obligations promptly; always learn and improve.</p>
+      <h3>Slogan</h3>
+      <p>United we stand, prosperous we grow.</p>
     </div>
   </section>
 
-  <!-- FOOTER with WhatsApp -->
+  <!-- FOOTER WITH WHATSAPP -->
   <footer class="footer">
-    <div class="footer-whatsapp">
-      <a href="https://wa.me/2348033713873" target="_blank" title="Chat on WhatsApp">
-        <img src="assets/download.png" alt="WhatsApp" class="whatsapp-img">
-      </a>
-    </div>
+    <a href="https://wa.me/2348033713873" target="_blank">
+      <img src="assets/download.png" alt="WhatsApp" class="whatsapp-img">
+    </a>
     <p>&copy; 2025 Prekebena Family Dynasty</p>
   </footer>
 
