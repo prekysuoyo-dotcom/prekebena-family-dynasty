@@ -1,77 +1,64 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbw3b-ldsgd7J6m8XGnD0ZPp-H_hpi-jYtg3Ay1s51Qbrlu2jY8FAWvALIz6MvYdAXWo/exec";
+document.addEventListener("DOMContentLoaded", () => {
 
-/* ---------------- REGISTRATION ---------------- */
-if (document.getElementById("registerForm")) {
-    document.getElementById("registerForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
+    // Registration
+    const registerForm = document.getElementById("registerForm");
+    if (registerForm) {
+        registerForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-        const data = {
-            action: "register",
-            fullname: document.getElementById("fullname").value,
-            email: document.getElementById("email").value,
-            phone: document.getElementById("phone").value,
-            password: document.getElementById("password").value,
-        };
+            const formData = new FormData();
+            formData.append("action", "register");
+            formData.append("name", document.getElementById("name").value);
+            formData.append("email", document.getElementById("email").value);
+            formData.append("phone", document.getElementById("phone").value);
+            formData.append("password", document.getElementById("password").value);
 
-        let res = await fetch(API_URL, {
-            method: "POST",
-            body: JSON.stringify(data),
+            const response = await fetch(API_URL, {
+                method: "POST",
+                body: formData,
+            });
+
+            const result = await response.text();
+
+            if (result.includes("successful")) {
+                alert("Registration successful!\nAn email has been sent to you.\nThank you for joining the Prekebena Family Dynasty.");
+                window.location.href = "login.html";
+            } else {
+                alert("Error: Something went wrong. Please try again.");
+            }
         });
-
-        let result = await res.json();
-
-        if (result.status === "success") {
-            Swal.fire("Success!", "Registration completed.", "success");
-            setTimeout(() => window.location.href = "login.html", 1500);
-        } else {
-            Swal.fire("Error", result.message, "error");
-        }
-    });
-}
-
-
-/* ---------------- LOGIN ---------------- */
-if (document.getElementById("loginForm")) {
-    document.getElementById("loginForm").addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        const data = {
-            action: "login",
-            email: document.getElementById("email").value,
-            password: document.getElementById("password").value
-        };
-
-        let res = await fetch(API_URL, {
-            method: "POST",
-            body: JSON.stringify(data),
-        });
-
-        let result = await res.json();
-
-        if (result.status === "success") {
-            localStorage.setItem("user", JSON.stringify(result.user));
-            window.location.href = "profile.html";
-        } else {
-            Swal.fire("Login Failed", result.message, "error");
-        }
-    });
-}
-
-
-/* ---------------- PROFILE PAGE ---------------- */
-if (window.location.pathname.includes("profile.html")) {
-    const user = JSON.parse(localStorage.getItem("user"));
-
-    if (!user) {
-        window.location.href = "login.html";
-    } else {
-        document.getElementById("p_name").innerText = user.fullname;
-        document.getElementById("p_email").innerText = user.email;
-        document.getElementById("p_phone").innerText = user.phone;
     }
 
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-        localStorage.removeItem("user");
-        window.location.href = "login.html";
-    });
-}
+    // Login
+    const loginForm = document.getElementById("loginForm");
+    if (loginForm) {
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            const formData = new FormData();
+            formData.append("action", "login");
+            formData.append("email", document.getElementById("loginEmail").value);
+            formData.append("password", document.getElementById("loginPassword").value);
+
+            const response = await fetch(API_URL, {
+                method: "POST",
+                body: formData,
+            });
+
+            const data = await response.json();
+
+            if (data.status === "success") {
+
+                if (data.role === "admin") {
+                    window.location.href = "admin.html";
+                } else {
+                    window.location.href = "member.html";
+                }
+
+            } else {
+                alert("Incorrect email or password. Please try again.");
+            }
+        });
+    }
+
+});
