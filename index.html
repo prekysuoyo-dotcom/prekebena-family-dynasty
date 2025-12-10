@@ -1,30 +1,73 @@
-<header class="hero-banner">
-  <div class="hero-content">
-    <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Logo" class="logo-hero">
-    <h1>Welcome to the Prekebena Family Dynasty</h1>
-    <p class="slogan">United we stand, prosperous we grow</p>
-    <div class="hero-buttons">
-      <button onclick="openLogin()">Login</button>
-      <button onclick="openSignup()">Create Account</button>
-    </div>
-  </div>
-</header>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Prekebena Family Dynasty</title>
 
-<section class="cards-section">
-  <div class="card">
-    <h2>Mission</h2>
-    <p>To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to the collective well-being and sustainable development of the family.</p>
-  </div>
-  <div class="card">
-    <h2>Vision</h2>
-    <p>To be the leading family name in our region, recognised for unity, the love of God, financial resilience, and active participation in shaping a prosperous future for the Prekebena name.</p>
-  </div>
-  <div class="card">
-    <h2>Motto</h2>
-    <p>Together we rise, together we thrive.</p>
-  </div>
-  <div class="card">
-    <h2>Slogan</h2>
-    <p>United we stand, prosperous we grow.</p>
-  </div>
-</section>
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-left">
+      <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Prekebena Logo" class="logo-img">
+      <span class="brand">Prekebena Family Dynasty</span>
+    </div>
+    <div class="nav-right">
+      <button class="btn-outline" onclick="openLogin()">Login</button>
+      <button class="btn-primary" onclick="openSignup()">Create Account</button>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER -->
+  <header class="hero-banner">
+    <div class="hero-content">
+      <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Logo" class="logo-hero">
+      <h1>Welcome to the Prekebena Family Dynasty</h1>
+      <p class="slogan">United we stand, prosperous we grow</p>
+      <div class="hero-buttons">
+        <button onclick="openLogin()">Login</button>
+        <button onclick="openSignup()">Create Account</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- CARDS SECTION FOR MISSION, VISION, MOTTO, SLOGAN -->
+  <section class="cards-section">
+    <div class="card">
+      <h2>Mission</h2>
+      <p>To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to the collective well-being and sustainable development of the family.</p>
+    </div>
+    <div class="card">
+      <h2>Vision</h2>
+      <p>To be the leading family name in our region, recognised for unity, the love of God, financial resilience, and active participation in shaping a prosperous future for the Prekebena name.</p>
+    </div>
+    <div class="card">
+      <h2>Motto</h2>
+      <p>Together we rise, together we thrive.</p>
+    </div>
+    <div class="card">
+      <h2>Slogan</h2>
+      <p>United we stand, prosperous we grow.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER WITH WHATSAPP -->
+  <footer class="footer">
+    <div>
+      <a href="https://wa.me/2348033713873" target="_blank" title="Chat on WhatsApp">
+        <img src="assets/download.png" alt="WhatsApp" class="whatsapp-img">
+      </a>
+    </div>
+    <p>&copy; 2025 Prekebena Family Dynasty</p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
+</body>
+</html>
