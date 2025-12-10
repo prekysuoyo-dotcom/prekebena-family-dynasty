@@ -25,7 +25,7 @@
   </div>
 </header>
 
-<!-- Mission & Vision -->
+<!-- Mission & Vision Section -->
 <section class="info container">
   <div class="card">
     <h3>Mission Statement</h3>
@@ -37,4 +37,31 @@
   </div>
 </section>
 
-<!--
+<!-- Core Values -->
+<section class="core-values container">
+  <h3>Core Values</h3>
+  <div class="values-grid">
+    <div class="value-card"><h4>Love & Respect</h4><p>Treat every member with dignity.</p></div>
+    <div class="value-card"><h4>Integrity</h4><p>Honest dealings in all financial and relational matters.</p></div>
+    <div class="value-card"><h4>Collaboration</h4><p>Work together across ages and branches.</p></div>
+    <div class="value-card"><h4>Commitment</h4><p>Fulfil obligations promptly and responsibly.</p></div>
+    <div class="value-card"><h4>Continuous Improvement</h4><p>Learn, adapt, and grow as a family.</p></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>&copy; 2025 Prekebena Family Dynasty</p>
+  </div>
+</footer>
+
+<script>
+  // Show current date in Nigeria
+  const nigeriaTime = new Date().toLocaleString("en-NG", { timeZone: "Africa/Lagos", weekday:'long', year:'numeric', month:'long', day:'numeric' });
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('currentDate').textContent = nigeriaTime;
+  });
+</script>
+
+</body>
+</html>
