@@ -38,6 +38,12 @@
 <script>
 const webAppURL = "https://script.google.com/macros/s/AKfycbxshlsikSEyPsi6YRcpNy3oRCxtAh325PTCgqgWz5f_Jst-RfPvhYJf9ulMiywzmI7i/exec";
 
+// Display registration success message if coming from registration
+if(sessionStorage.getItem("registrationSuccess")){
+    alert("Registration successful! Please login with your details.");
+    sessionStorage.removeItem("registrationSuccess");
+}
+
 document.getElementById("loginBtn").addEventListener("click", () => {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value.trim();
@@ -53,13 +59,20 @@ document.getElementById("loginBtn").addEventListener("click", () => {
     .then(res => res.json())
     .then(data => {
         if(data.status === "success"){
+            // Save member data in sessionStorage
             sessionStorage.setItem("memberData", JSON.stringify(data));
+            // Redirect to member dashboard
             window.location.href = "membership.html";
-        } else {
+        } else if(data.status === "error") {
             document.getElementById("message").innerText = "Invalid email or password.";
+        } else {
+            document.getElementById("message").innerText = "Something went wrong. Please try again.";
         }
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+        console.error(err);
+        document.getElementById("message").innerText = "Error connecting to server. Please try again later.";
+    });
 });
 </script>
 
