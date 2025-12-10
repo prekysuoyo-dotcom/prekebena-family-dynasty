@@ -1,85 +1,143 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Login - Prekebena Family Dynasty</title>
-<link rel="stylesheet" href="styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
-    body { font-family:"Inter", sans-serif; margin:0; padding:0; background:#f8f9fc; }
-    .container { max-width:400px; margin:80px auto; background:white; padding:25px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
-    h2 { text-align:center; color:#022c43; margin-bottom:20px; }
-    .form-group { margin-bottom:15px; }
-    .form-group label { display:block; margin-bottom:5px; font-weight:600; }
-    .form-group input { width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; }
-    button { width:100%; padding:12px; background:#ffcf33; border:none; border-radius:6px; font-weight:bold; cursor:pointer; }
-    button:hover { background:#e6b800; }
-    .message { text-align:center; margin-top:15px; font-weight:bold; color:#022c43; }
-    a { text-decoration:none; color:#022c43; display:block; text-align:center; margin-top:10px; }
+    body {
+        font-family: 'Inter', sans-serif;
+        background: #eef2f5;
+    }
+    .container {
+        width: 95%;
+        max-width: 400px;
+        margin: 80px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: #333;
+    }
+    label {
+        font-weight: 600;
+        margin-top: 10px;
+        display: block;
+    }
+    input {
+        width: 100%;
+        padding: 12px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        margin-top: 5px;
+        font-size: 15px;
+    }
+    button {
+        width: 100%;
+        background: #007bff;
+        padding: 14px;
+        border: none;
+        border-radius: 8px;
+        color: white;
+        font-size: 16px;
+        margin-top: 20px;
+        font-weight: 600;
+    }
+    button:hover {
+        background: #005fcc;
+        cursor: pointer;
+    }
+    .back {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .back a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 600;
+    }
 </style>
 </head>
-<body>
 
+<body>
 <div class="container">
     <h2>Login</h2>
-    <div class="form-group">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" required>
+
+    <form id="loginForm">
+        <label>Email</label>
+        <input type="email" name="email" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="back">
+        <a href="index.html">← Back to Home</a>
     </div>
-    <div class="form-group">
-        <label for="password">Password</label>
-        <input type="password" id="password" required>
-    </div>
-    <button id="loginBtn">Login</button>
-    <div class="message" id="message"></div>
-    <a href="registration.html">Don't have an account? Register</a>
 </div>
 
 <script>
-const webAppURL = "https://script.google.com/macros/s/AKfycbyDOQgnQQQZlverxZJDGlhXu9oVSMMJux_zACNsZvaKXSl48ecQLOuOljjWbOPRkj3I/exec";
 
-// Show registration success alert if redirected from registration
-if(sessionStorage.getItem("registrationSuccess")){
-    alert("Registration successful! Please login with your details.");
-    sessionStorage.removeItem("registrationSuccess");
-}
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyDOQgnQQQZlverxZJDGlhXu9oVSMMJux_zACNsZvaKXSl48ecQLOuOljjWbOPRkj3I/exec";
 
-document.getElementById("loginBtn").addEventListener("click", async () => {
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
+document.getElementById("loginForm").addEventListener("submit", e => {
+    e.preventDefault();
 
-    if(!email || !password){
-        document.getElementById("message").innerText = "Please enter email and password.";
-        return;
-    }
+    let form = new FormData(e.target);
 
-    const form = new URLSearchParams();
-    form.append("action", "login");
-    form.append("email", email);
-    form.append("password", password);
+    fetch(SCRIPT_URL, {
+        method: "POST",
+        body: form
+    })
+    .then(res => res.text())
+    .then(text => {
 
-    try {
-        const res = await fetch(webAppURL, {
-            method: "POST",
-            body: form,
-            headers: { "Content-Type": "application/x-www-form-urlencoded" }
-        });
-        const data = await res.json();
+        if (text.includes("LOGIN_SUCCESS")) {
 
-        if(data.status === "success"){
-            // Save member data in sessionStorage
-            sessionStorage.setItem("memberData", JSON.stringify(data));
-            // Redirect to member dashboard
-            window.location.href = "membership.html";
-        } else if(data.status === "error") {
-            document.getElementById("message").innerText = "Invalid email or password.";
+            Swal.fire({
+                icon: 'success',
+                title: 'Login Successful!',
+                text: 'Redirecting...',
+                timer: 2000,
+                showConfirmButton: false
+            });
+
+            setTimeout(() => {
+                window.location.href = "dashboard.html";
+            }, 2000);
+
         } else {
-            document.getElementById("message").innerText = "Something went wrong. Please try again.";
+            Swal.fire({
+                icon: 'error',
+                title: 'Login Failed',
+                text: 'Invalid email or password'
+            });
         }
-    } catch (err) {
+
+    })
+    .catch(err => {
+
+        Swal.fire({
+            icon: 'error',
+            title: 'Connection Error',
+            text: 'Cannot reach the server.'
+        });
+
         console.error(err);
-        document.getElementById("message").innerText = "Error connecting to server. Please try again later.";
-    }
+    });
 });
 </script>
 
