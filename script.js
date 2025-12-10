@@ -1,58 +1,77 @@
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw3b-ldsgd7J6m8XGnD0ZPp-H_hpi-jYtg3Ay1s51Qbrlu2jY8FAWvALIz6MvYdAXWo/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbw3b-ldsgd7J6m8XGnD0ZPp-H_hpi-jYtg3Ay1s51Qbrlu2jY8FAWvALIz6MvYdAXWo/exec";
 
-// Modal
-const modal = document.getElementById('modal');
-const registerBtn = document.querySelector('.register-btn');
-const loginBtn = document.querySelector('.login-btn');
-const closeBtn = document.querySelector('.close');
-const modalRegister = document.getElementById('registerFormModal');
-const modalLogin = document.getElementById('loginFormModal');
+/* ---------------- REGISTRATION ---------------- */
+if (document.getElementById("registerForm")) {
+    document.getElementById("registerForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-registerBtn.onclick = () => {
-  modal.style.display = 'flex';
-  modalRegister.classList.add('active');
-  modalLogin.classList.remove('active');
-};
-loginBtn.onclick = () => {
-  modal.style.display = 'flex';
-  modalLogin.classList.add('active');
-  modalRegister.classList.remove('active');
-};
-closeBtn.onclick = () => modal.style.display = 'none';
-window.onclick = e => { if(e.target === modal) modal.style.display='none'; };
+        const data = {
+            action: "register",
+            fullname: document.getElementById("fullname").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            password: document.getElementById("password").value,
+        };
 
-// Current Date (Nigeria)
-const options = { timeZone: 'Africa/Lagos', weekday:'long', year:'numeric', month:'long', day:'numeric' };
-document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-NG', options);
+        let res = await fetch(API_URL, {
+            method: "POST",
+            body: JSON.stringify(data),
+        });
 
-// Register
-async function register(form){
-  const data = new FormData(form);
-  data.append('action','register');
-  try{
-    const response = await fetch(WEB_APP_URL, { method:'POST', body:data });
-    const result = await response.text();
-    alert(result);
-    form.reset();
-    modal.style.display='none';
-  }catch(err){ alert("Registration failed: "+err); }
+        let result = await res.json();
+
+        if (result.status === "success") {
+            Swal.fire("Success!", "Registration completed.", "success");
+            setTimeout(() => window.location.href = "login.html", 1500);
+        } else {
+            Swal.fire("Error", result.message, "error");
+        }
+    });
 }
 
-// Login
-async function login(form){
-  const data = new FormData(form);
-  data.append('action','login');
-  try{
-    const response = await fetch(WEB_APP_URL, { method:'POST', body:data });
-    const result = await response.json();
-    if(result.status==='success'){
-      alert("Login successful!");
-      if(result.role==='admin') window.location.href='admin.html';
-      else window.location.href='membership.html';
-      modal.style.display='none';
-    }else alert("Invalid email or password");
-  }catch(err){ alert("Login failed: "+err); }
+
+/* ---------------- LOGIN ---------------- */
+if (document.getElementById("loginForm")) {
+    document.getElementById("loginForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const data = {
+            action: "login",
+            email: document.getElementById("email").value,
+            password: document.getElementById("password").value
+        };
+
+        let res = await fetch(API_URL, {
+            method: "POST",
+            body: JSON.stringify(data),
+        });
+
+        let result = await res.json();
+
+        if (result.status === "success") {
+            localStorage.setItem("user", JSON.stringify(result.user));
+            window.location.href = "profile.html";
+        } else {
+            Swal.fire("Login Failed", result.message, "error");
+        }
+    });
 }
 
-modalRegister.addEventListener('submit', e=>{ e.preventDefault(); register(e.target); });
-modalLogin.addEventListener('submit', e=>{ e.preventDefault(); login(e.target); });
+
+/* ---------------- PROFILE PAGE ---------------- */
+if (window.location.pathname.includes("profile.html")) {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+        window.location.href = "login.html";
+    } else {
+        document.getElementById("p_name").innerText = user.fullname;
+        document.getElementById("p_email").innerText = user.email;
+        document.getElementById("p_phone").innerText = user.phone;
+    }
+
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+        localStorage.removeItem("user");
+        window.location.href = "login.html";
+    });
+}
