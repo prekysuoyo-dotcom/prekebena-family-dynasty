@@ -5,13 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prekebena Family Dynasty</title>
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-  <header class="top-motto">
+  <!-- TOP BANNER -->
+  <header class="top-banner">
     <p>United we stand, prosperous we grow.</p>
   </header>
 
+  <!-- NAVBAR -->
   <nav class="navbar">
     <div class="logo-brand">
       <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Logo" class="logo">
@@ -23,25 +26,28 @@
     </div>
   </nav>
 
+  <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-content">
       <h1>Welcome to Prekebena Family Dynasty</h1>
-      <p class="hero-subtitle">A family united by love, respect & prosperity.</p>
+      <p class="hero-subtitle">Uniting the Prekebena’s, building lasting love, unity, and prosperity.</p>
       <button class="btn-primary btn-large">Join the Dynasty</button>
     </div>
   </section>
 
+  <!-- MISSION & VISION -->
   <section class="mission-vision container">
     <div class="box">
       <h2>Mission</h2>
-      <p>To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to collective well‑being and sustainable development.</p>
+      <p>To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to the collective well‑being and sustainable development.</p>
     </div>
     <div class="box">
       <h2>Vision</h2>
-      <p>To be the leading family name in our region, recognised for unity, love of God, financial resilience, and active participation in shaping a prosperous future.</p>
+      <p>To be the leading family name in our region, recognised for unity, the love of God, financial resilience, and active participation in shaping a prosperous future for the Prekebena name.</p>
     </div>
   </section>
 
+  <!-- CORE VALUES -->
   <section class="core-values">
     <h2>Core Values</h2>
     <div class="values-grid">
@@ -53,6 +59,50 @@
     </div>
   </section>
 
+  <!-- FAMILY STRUCTURE & MEMBERSHIP -->
+  <section class="accordion-section container">
+    <h2>Family Structure & Membership</h2>
+    
+    <button class="accordion">Organization Structure</button>
+    <div class="panel">
+      <p><strong>General Assembly:</strong> Approve budgets, elect Board, amend bylaws.</p>
+      <p><strong>Board of Directors:</strong> Strategic direction, oversee finances, represent the family.</p>
+      <p><strong>Executive Committee:</strong> Execute Board decisions, day-to-day operations.</p>
+      <p><strong>Committees:</strong> Welfare, Youth, Audit, PRO, etc.</p>
+    </div>
+
+    <button class="accordion">Membership & Rights</button>
+    <div class="panel">
+      <p>Eligibility: Any Prekebena aged 18+, must sign membership agreement, pay initial registration.</p>
+      <p>Rights: Vote in General Assembly, access loans, attend meetings/events.</p>
+      <p>Obligations: Uphold family values, pay contributions, participate in activities, respect hierarchy.</p>
+    </div>
+
+    <button class="accordion">Financial Framework</button>
+    <div class="panel">
+      <p>Registration Fee: ₦5,000 (one-time)</p>
+      <p>Monthly Contribution: ₦2,000</p>
+      <p>Special Dues: As needed (burial, marriage, community projects)</p>
+      <p>Savings/Share Purchase: Optional, min ₦5,000 monthly</p>
+      <p>Penalties: ₦500 surcharge for late payments</p>
+    </div>
+
+    <button class="accordion">Meetings & Agenda</button>
+    <div class="panel">
+      <p>AGM: Once a year, last quarter.</p>
+      <p>Monthly Executive Meeting: First Sunday 3–6pm</p>
+      <p>Special Meetings: Called by President or 1/3 of members.</p>
+      <p>Agenda: Opening prayer, roll call, previous minutes, reports, announcements, closing prayer.</p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Become a Member Today</h2>
+    <button class="btn-primary btn-large">Register Now</button>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="footer">
     <p class="footer-slogan">Together we rise, together we thrive.</p>
     <a href="https://wa.me/2348033713873" target="_blank">
@@ -60,6 +110,18 @@
     </a>
     <p>&copy; 2025 Prekebena Family Dynasty</p>
   </footer>
+
+  <!-- ACCORDION SCRIPT -->
+  <script>
+    const acc = document.getElementsByClassName("accordion");
+    for (let i = 0; i < acc.length; i++) {
+      acc[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        const panel = this.nextElementSibling;
+        panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
+      });
+    }
+  </script>
 
 </body>
 </html>
