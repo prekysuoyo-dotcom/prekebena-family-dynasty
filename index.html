@@ -7,82 +7,33 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-/* Reset & Body */
 body { font-family: 'Inter', sans-serif; margin:0; padding:0; background:#f4f4f4; color:#222; }
-
-/* Header */
 header {
-    background:#022c43;
-    color:white;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:15px 20px;
-    flex-wrap:wrap;
+    background:#022c43; color:white; display:flex; justify-content:space-between;
+    align-items:center; padding:15px 20px; flex-wrap:wrap;
 }
 .logo { display:flex; align-items:center; gap:12px; }
 .logo img { width:50px; border-radius:8px; }
 .logo h1 { margin:0; font-size:20px; font-weight:700; }
-nav a {
-    color:white; text-decoration:none; margin-left:15px;
-    padding:6px 12px; border-radius:5px; font-weight:600; transition:0.3s;
-}
+nav a { color:white; text-decoration:none; margin-left:15px; padding:6px 12px; border-radius:5px; font-weight:600; transition:0.3s; }
 nav a:hover { background:#ffcf33; color:#000; }
-
-/* Hero Section */
-.hero {
-    background:#005f99;
-    color:white;
-    padding:40px 20px;
-    text-align:center;
-}
+.hero { background:#005f99; color:white; padding:40px 20px; text-align:center; }
 .hero h2 { font-size:28px; margin-bottom:10px; }
 .hero p { font-size:16px; font-style:italic; opacity:0.85; }
-
-/* Container */
 .container { max-width:960px; margin:30px auto; padding:0 15px; }
-
-/* Section Titles */
-h2 { color:#022c43; font-size:22px; margin-bottom:15px; border-left:5px solid #ffcf33; padding-left:10px; }
-
-/* Announcements / News */
-.news-section { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin-bottom:30px; }
-.news-card {
-    background:white; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1);
-    transition:0.3s; cursor:pointer;
-}
-.news-card:hover { transform:translateY(-5px); box-shadow:0 6px 15px rgba(0,0,0,0.15); }
-.news-card h3 { margin-top:0; font-size:18px; color:#007bff; }
-.news-card p { font-size:14px; line-height:1.5; }
-
-/* Upcoming Events */
-.events-section { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-bottom:30px; }
-.event-card { background:white; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1); transition:0.3s; }
-.event-card:hover { transform:translateY(-5px); box-shadow:0 6px 15px rgba(0,0,0,0.15); }
-.event-card h3 { margin-top:0; color:#ffcf33; font-size:18px; }
-.event-card p { font-size:14px; }
-
-/* Core Values */
-.core-values { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; margin-bottom:30px; }
-.core-card { background:white; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1); transition:0.3s; }
-.core-card:hover { transform:translateY(-5px); box-shadow:0 6px 15px rgba(0,0,0,0.15); }
-.core-card h3 { margin-top:0; color:#ffcf33; font-size:18px; }
-.core-card p { font-size:14px; }
-
-/* WhatsApp Button */
+h2.section-title { color:#022c43; font-size:22px; margin-bottom:15px; border-left:5px solid #ffcf33; padding-left:10px; }
+.news-section, .events-section, .core-values { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; margin-bottom:30px; }
+.news-card, .event-card, .core-card { background:white; padding:20px; border-radius:10px; box-shadow:0 3px 10px rgba(0,0,0,0.1); transition:0.3s; }
+.news-card:hover, .event-card:hover, .core-card:hover { transform:translateY(-5px); box-shadow:0 6px 15px rgba(0,0,0,0.15); }
+.news-card h3, .event-card h3, .core-card h3 { margin-top:0; }
+.news-card h3 { font-size:18px; color:#007bff; }
+.news-card p, .event-card p, .core-card p { font-size:14px; line-height:1.5; }
+.event-card h3 { color:#ffcf33; font-size:18px; }
+.core-card h3 { color:#ffcf33; font-size:18px; }
 .whatsapp-btn { position:fixed; bottom:20px; right:20px; z-index:100; }
 .whatsapp-btn img { width:60px; height:60px; }
-
-/* Footer */
 footer { text-align:center; padding:15px; background:#022c43; color:white; font-weight:600; margin-top:40px; }
-
-/* Responsive */
-@media(max-width:600px){
-    header .logo h1 { font-size:18px; }
-    h2 { font-size:20px; }
-    .hero h2 { font-size:24px; }
-    .hero p { font-size:14px; }
-}
+@media(max-width:600px){ header .logo h1 { font-size:18px; } h2.section-title { font-size:20px; } .hero h2 { font-size:24px; } .hero p { font-size:14px; } }
 </style>
 </head>
 <body>
@@ -107,34 +58,27 @@ footer { text-align:center; padding:15px; background:#022c43; color:white; font-
 
 <div class="container">
 
+    <!-- Mission & Vision -->
+    <h2 class="section-title">Our Mission</h2>
+    <p>To build a united, financially empowered, and prosperous Prekebena family through cooperation, love, transparency, and collective progress.</p>
+
+    <h2 class="section-title">Our Vision</h2>
+    <p>A globally recognized family dynasty rooted in unity, growth, and generational success.</p>
+
     <!-- Announcements -->
-    <h2>Announcements</h2>
+    <h2 class="section-title">Announcements</h2>
     <div class="news-section" id="news-section">
-        <div class="news-card">
-            <h3>Family Meeting Scheduled</h3>
-            <p>The next family meeting will be held virtually on 20th December 2025.</p>
-        </div>
-        <div class="news-card">
-            <h3>Special Contribution Reminder</h3>
-            <p>All members are reminded to complete their monthly contributions before year-end.</p>
-        </div>
+        <!-- Dynamic announcements from Sheet -->
     </div>
 
     <!-- Upcoming Events -->
-    <h2>Upcoming Events</h2>
+    <h2 class="section-title">Upcoming Events</h2>
     <div class="events-section" id="events-section">
-        <div class="event-card">
-            <h3>Christmas Gathering</h3>
-            <p>Date: 25th December 2025</p>
-        </div>
-        <div class="event-card">
-            <h3>Annual Family Retreat</h3>
-            <p>Date: 15th January 2026</p>
-        </div>
+        <!-- Dynamic events from Sheet -->
     </div>
 
     <!-- Core Values -->
-    <h2>Core Values</h2>
+    <h2 class="section-title">Core Values</h2>
     <div class="core-values">
         <div class="core-card"><h3>Love & Respect</h3><p>Treat every member with dignity and care.</p></div>
         <div class="core-card"><h3>Integrity</h3><p>Honest dealings in all financial and relational matters.</p></div>
@@ -150,13 +94,44 @@ footer { text-align:center; padding:15px; background:#022c43; color:white; font-
     <img src="assets/download.png" alt="WhatsApp">
 </a>
 
-<footer>
-    Prekebena Family Dynasty
-</footer>
+<footer>Prekebena Family Dynasty</footer>
 
 <script>
-const options = { weekday:'long', year:'numeric', month:'long', day:'numeric', timeZone:'Africa/Lagos' };
-document.getElementById("ng-date").innerText = new Date().toLocaleDateString("en-NG", options);
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbxshlsikSEyPsi6YRcpNy3oRCxtAh325PTCgqgWz5f_Jst-RfPvhYJf9ulMiywzmI7i/exec";
+
+// Fetch announcements and events dynamically
+async function loadSheetData() {
+    try {
+        const res = await fetch(`${SHEET_URL}?action=getMembers`);
+        const data = await res.json();
+
+        const newsSection = document.getElementById("news-section");
+        const eventsSection = document.getElementById("events-section");
+
+        // Filter announcements (just example: last 3 members as news)
+        const announcements = data.slice(-3);
+        announcements.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "news-card";
+            card.innerHTML = `<h3>${item[0]} Registered</h3><p>Email: ${item[1]}</p>`;
+            newsSection.appendChild(card);
+        });
+
+        // Upcoming events (just example: last 2 members as events)
+        const events = data.slice(-2);
+        events.forEach(item => {
+            const card = document.createElement("div");
+            card.className = "event-card";
+            card.innerHTML = `<h3>${item[0]} Event</h3><p>Phone: ${item[2]}</p>`;
+            eventsSection.appendChild(card);
+        });
+
+    } catch(err) {
+        console.error("Error fetching sheet data:", err);
+    }
+}
+
+loadSheetData();
 </script>
 
 </body>
