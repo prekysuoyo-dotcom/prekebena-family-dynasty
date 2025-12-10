@@ -5,115 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Prekebena Family Dynasty</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
-  <!-- MOTTO AT THE TOP -->
-  <section class="motto-top">
+  <header class="top-motto">
     <p>United we stand, prosperous we grow.</p>
-  </section>
+  </header>
 
-  <!-- NAVBAR -->
-  <nav class="nav">
-    <div class="nav-left">
+  <nav class="navbar">
+    <div class="logo-brand">
       <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Logo" class="logo">
-      <span class="brand">Prekebena Family Dynasty</span>
+      <span class="brand-name">Prekebena Family Dynasty</span>
     </div>
-    <div class="nav-right">
-      <button class="btn-outline" onclick="openLogin()">Login</button>
-      <button class="btn-primary" onclick="openSignup()">Create Account</button>
+    <div class="nav-buttons">
+      <button class="btn-outline">Login</button>
+      <button class="btn-primary">Create Account</button>
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
-  <header class="hero">
-    <div class="hero-inner">
+  <section class="hero">
+    <div class="hero-content">
       <h1>Welcome to Prekebena Family Dynasty</h1>
-      <button class="btn-primary btn-large" onclick="openSignup()">Join the Dynasty</button>
-    </div>
-  </header>
-
-  <!-- MISSION & VISION -->
-  <section class="about">
-    <div class="about-inner">
-      <h2>Mission & Vision</h2>
-      <p><strong>Mission:</strong> To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to collective well-being and sustainable development.</p>
-      <p><strong>Vision:</strong> To be the leading family name in our region, recognised for unity, the love of God, financial resilience, and active participation in shaping a prosperous future.</p>
+      <p class="hero-subtitle">A family united by love, respect & prosperity.</p>
+      <button class="btn-primary btn-large">Join the Dynasty</button>
     </div>
   </section>
 
-  <!-- CORE VALUES -->
-  <section class="cards-section">
-    <div class="card"><h3>Love & Respect</h3><p>Treat every member with dignity.</p></div>
-    <div class="card"><h3>Integrity</h3><p>Honest dealings in all financial and relational matters.</p></div>
-    <div class="card"><h3>Collaboration</h3><p>Work together across ages and branches.</p></div>
-    <div class="card"><h3>Commitment</h3><p>Fulfil obligations promptly and responsibly.</p></div>
-    <div class="card"><h3>Continuous Improvement</h3><p>Learn, adapt, and grow as a family.</p></div>
-  </section>
-
-  <!-- ORGANIZATION STRUCTURE / MEMBERSHIP / BENEFITS -->
-  <section class="accordion-section">
-    <h2>Family Organization & Membership</h2>
-    <div class="accordion-item">
-      <button class="accordion">Family Organization Structure</button>
-      <div class="panel">
-        <p><strong>General Assembly:</strong> Approve budgets, elect Board, amend bylaws.</p>
-        <p><strong>Board of Directors:</strong> 7 members provide strategic direction, oversee finances.</p>
-        <p><strong>Executive Committee:</strong> Handles day-to-day operations.</p>
-        <p><strong>Committees:</strong> Welfare, Youth, Audit, etc.</p>
-      </div>
+  <section class="mission-vision container">
+    <div class="box">
+      <h2>Mission</h2>
+      <p>To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to collective well‑being and sustainable development.</p>
     </div>
-    <div class="accordion-item">
-      <button class="accordion">Membership & Financial Framework</button>
-      <div class="panel">
-        <p><strong>Registration Fee:</strong> ₦5,000 (one-time)</p>
-        <p><strong>Monthly Contribution:</strong> ₦2,000</p>
-        <p><strong>Special Dues:</strong> As needed (burial, marriage, projects)</p>
-        <p><strong>Savings/Share Purchase:</strong> Optional ₦5,000 minimum monthly</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <button class="accordion">Meetings & Agenda</button>
-      <div class="panel">
-        <p>Annual General Meeting, Monthly Executive Meetings, Special Meetings, Quorum details, Agenda Template.</p>
-      </div>
-    </div>
-    <div class="accordion-item">
-      <button class="accordion">Expectations & Benefits</button>
-      <div class="panel">
-        <p>Respect hierarchy, attend meetings, confidentiality, unity, financial & social benefits.</p>
-      </div>
+    <div class="box">
+      <h2>Vision</h2>
+      <p>To be the leading family name in our region, recognised for unity, love of God, financial resilience, and active participation in shaping a prosperous future.</p>
     </div>
   </section>
 
-  <!-- CALL TO ACTION -->
-  <section class="cta">
-    <h2>Become a Member Today</h2>
-    <button class="btn-primary btn-large" onclick="openSignup()">Register Now</button>
+  <section class="core-values">
+    <h2>Core Values</h2>
+    <div class="values-grid">
+      <div class="value-card"><h3>Love & Respect</h3><p>Treat every member with dignity.</p></div>
+      <div class="value-card"><h3>Integrity</h3><p>Honest dealings in all financial and relational matters.</p></div>
+      <div class="value-card"><h3>Collaboration</h3><p>Work together across ages and branches.</p></div>
+      <div class="value-card"><h3>Commitment</h3><p>Fulfil obligations promptly and responsibly.</p></div>
+      <div class="value-card"><h3>Continuous Improvement</h3><p>Learn, adapt, and grow as a family.</p></div>
+    </div>
   </section>
 
-  <!-- FOOTER WITH SLOGAN AND WHATSAPP -->
   <footer class="footer">
-    <p class="slogan-footer">Together we rise, together we thrive.</p>
+    <p class="footer-slogan">Together we rise, together we thrive.</p>
     <a href="https://wa.me/2348033713873" target="_blank">
       <img src="assets/download.png" alt="WhatsApp" class="whatsapp-icon">
     </a>
     <p>&copy; 2025 Prekebena Family Dynasty</p>
   </footer>
 
-  <script src="script.js"></script>
-  <script>
-    // Accordion functionality
-    const acc = document.getElementsByClassName("accordion");
-    for (let i = 0; i < acc.length; i++) {
-      acc[i].addEventListener("click", function() {
-        this.classList.toggle("active");
-        const panel = this.nextElementSibling;
-        panel.style.maxHeight = panel.style.maxHeight ? null : panel.scrollHeight + "px";
-      });
-    }
-  </script>
 </body>
 </html>
