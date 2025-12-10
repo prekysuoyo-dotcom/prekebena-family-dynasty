@@ -1,72 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Register - Prekebena Family Dynasty</title>
-  <link rel="stylesheet" href="styles.css">
-
-  <style>
-    body { font-family: "Inter", sans-serif; background: #f8f9fc; margin:0; padding:0; }
-    .container { max-width: 400px; margin: 50px auto; background:white; padding:30px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register - Prekebena Family Dynasty</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    body { font-family:"Inter", sans-serif; margin:0; padding:0; background:#f8f9fc; }
+    .container { max-width:500px; margin:50px auto; background:white; padding:25px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
     h2 { text-align:center; color:#022c43; margin-bottom:20px; }
-    input { width:100%; padding:10px; margin:8px 0; border-radius:6px; border:1px solid #ccc; }
-    button { width:100%; padding:12px; background:#ffcf33; border:none; border-radius:6px; font-weight:bold; cursor:pointer; margin-top:10px; }
+    .form-group { margin-bottom:15px; }
+    .form-group label { display:block; margin-bottom:5px; font-weight:600; }
+    .form-group input { width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; }
+    button { width:100%; padding:12px; background:#ffcf33; border:none; border-radius:6px; font-weight:bold; cursor:pointer; }
     button:hover { background:#e6b800; }
-    .message { text-align:center; margin-top:10px; font-weight:bold; }
-    a { display:block; text-align:center; margin-top:10px; color:#022c43; text-decoration:none; }
-  </style>
+    .message { text-align:center; margin-top:15px; font-weight:bold; color:#022c43; }
+    a { text-decoration:none; color:#022c43; display:block; text-align:center; margin-top:10px; }
+</style>
 </head>
 <body>
 
 <div class="container">
-  <h2>Register</h2>
-  <input type="text" id="name" placeholder="Full Name" required>
-  <input type="email" id="email" placeholder="Email" required>
-  <input type="tel" id="phone" placeholder="Phone (e.g. 8033713873)" required>
-  <input type="password" id="password" placeholder="Password" required>
-  <input type="url" id="imageUrl" placeholder="Profile Picture URL (optional)">
-  <button id="registerBtn">Register</button>
-  <div class="message" id="message"></div>
-  <a href="login.html">Already have an account? Login</a>
+    <h2>Register</h2>
+    <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" required>
+    </div>
+    <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" required>
+    </div>
+    <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="text" id="phone" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" required>
+    </div>
+    <div class="form-group">
+        <label for="profilePicture">Profile Picture URL (optional)</label>
+        <input type="text" id="profilePicture" placeholder="Enter image URL">
+    </div>
+    <button id="registerBtn">Register</button>
+    <div class="message" id="message"></div>
+    <a href="login.html">Already have an account? Login</a>
 </div>
 
 <script>
-  const webAppURL = "https://script.google.com/macros/s/AKfycbxshlsikSEyPsi6YRcpNy3oRCxtAh325PTCgqgWz5f_Jst-RfPvhYJf9ulMiywzmI7i/exec"; // replace with your web app URL
+const webAppURL = "https://script.google.com/macros/s/AKfycbxshlsikSEyPsi6YRcpNy3oRCxtAh325PTCgqgWz5f_Jst-RfPvhYJf9ulMiywzmI7i/exec";
 
-  document.getElementById("registerBtn").addEventListener("click", async () => {
+document.getElementById("registerBtn").addEventListener("click", () => {
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const phone = document.getElementById("phone").value.trim();
     const password = document.getElementById("password").value.trim();
-    const imageUrl = document.getElementById("imageUrl").value.trim();
+    const profilePicture = document.getElementById("profilePicture").value.trim();
 
     if(!name || !email || !phone || !password){
-      document.getElementById("message").innerText = "Please fill in all required fields.";
-      return;
+        document.getElementById("message").innerText = "All fields except profile picture are required.";
+        return;
     }
 
-    const params = new URLSearchParams({
-      action: "register",
-      name, email, phone, password, imageUrl
-    });
-
-    try{
-      const res = await fetch(`${webAppURL}?${params}`, { method:"POST" });
-      const data = await res.json();
-
-      if(data.status === "success"){
-        document.getElementById("message").innerText = "Registration successful! Check your email for login details.";
-      } else if(data.status === "exists"){
-        document.getElementById("message").innerText = "Email already registered!";
-      } else {
-        document.getElementById("message").innerText = "Registration failed. Try again.";
-      }
-    }catch(err){
-      document.getElementById("message").innerText = "Error connecting to server.";
-      console.error(err);
-    }
-  });
+    fetch(`${webAppURL}?action=register&name=${encodeURIComponent(name)}&email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&password=${encodeURIComponent(password)}&imageUrl=${encodeURIComponent(profilePicture)}`, {
+        method: "POST"
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.status === "success"){
+            document.getElementById("message").innerText = "Registration successful! Email with login details has been sent.";
+            setTimeout(() => { window.location.href = "index.html"; }, 3500);
+        } else if(data.status === "exists") {
+            document.getElementById("message").innerText = data.message;
+        } else {
+            document.getElementById("message").innerText = "Something went wrong. Please try again.";
+        }
+    })
+    .catch(err => console.error(err));
+});
 </script>
 
 </body>
