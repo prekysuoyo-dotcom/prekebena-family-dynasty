@@ -7,6 +7,8 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+<!-- Header -->
 <header>
   <div class="container header-content">
     <h1>United we stand, prosperous we grow.</h1>
@@ -15,14 +17,8 @@
   </div>
 </header>
 
-
-<section class="intro container">
-  <h2>PREKEBENA’S FAMILY DYNASTY</h2>
-  <p class="tagline">Uniting the Prekebena’s</p>
-  <p>Welcome to the official site of the Prekebena Family Dynasty, where unity, love, and prosperity are our guiding principles.</p>
-</section>
-
-<section class="mission-vision container">
+<!-- Mission & Vision -->
+<section class="info container">
   <div class="card">
     <h3>Mission Statement</h3>
     <p>To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to the collective well‑being and sustainable development of the family.</p>
@@ -33,6 +29,7 @@
   </div>
 </section>
 
+<!-- Core Values -->
 <section class="core-values container">
   <h3>Core Values</h3>
   <ul>
@@ -44,6 +41,7 @@
   </ul>
 </section>
 
+<!-- Footer with WhatsApp -->
 <footer>
   <div class="container">
     <p>
@@ -57,11 +55,11 @@
   </div>
 </footer>
 
-
+<!-- Current Date Script -->
 <script>
-  // Show current date in Nigeria
   const nigeriaTime = new Date().toLocaleString("en-NG", { timeZone: "Africa/Lagos", weekday: 'long', year:'numeric', month:'long', day:'numeric' });
   document.getElementById('currentDate').textContent = nigeriaTime;
 </script>
+
 </body>
 </html>
