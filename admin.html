@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Dashboard - Prekebena Family Dynasty</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1>Admin Dashboard</h1>
+<table border="1">
+  <thead>
+    <tr>
+      <th>Profile</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Phone</th>
+      <th>Registration Fee</th>
+      <th>Monthly Contribution</th>
+      <th>Special Dues</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody id="membersTable"></tbody>
+</table>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzVwwg8oFBEGYpvfoXITHvKJ87E3MloUOEiNbqIS-dXD8N6oSIZcACx5l2s8uGv0ZPE/exec";
+
+fetch(WEB_APP_URL + "?action=getMembers")
+  .then(res => res.json())
+  .then(data => {
+    const table = document.getElementById('membersTable');
+    data.slice(1).forEach(member => {
+      const row = `<tr>
+        <td><img src="${member[9]}" width="50"/></td>
+        <td>${member[0]}</td>
+        <td>${member[1]}</td>
+        <td>${member[2]}</td>
+        <td>${member[4]}</td>
+        <td>${member[5]}</td>
+        <td>${member[6]}</td>
+        <td>${member[7]}</td>
+      </tr>`;
+      table.innerHTML += row;
+    });
+  });
+</script>
+</body>
+</html>
+ad
