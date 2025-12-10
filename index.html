@@ -7,13 +7,32 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
 <header>
-  <h1>United we stand, prosperous we grow.</h1>
-  <h2>Together we rise, together we thrive</h2>
+  <div class="container">
+    <h1>United we stand, prosperous we grow.</h1>
+    <h2>Together we rise, together we thrive</h2>
+    <p id="currentDate"></p>
+  </div>
 </header>
 
-<section id="core-values">
+<section class="intro container">
+  <h2>PREKEBENA’S FAMILY DYNASTY</h2>
+  <p class="tagline">Uniting the Prekebena’s</p>
+  <p>Welcome to the official site of the Prekebena Family Dynasty, where unity, love, and prosperity are our guiding principles.</p>
+</section>
+
+<section class="mission-vision container">
+  <div class="card">
+    <h3>Mission Statement</h3>
+    <p>To foster a supportive, loving family where every Prekebena feels valued, empowered, and motivated to contribute to the collective well‑being and sustainable development of the family.</p>
+  </div>
+  <div class="card">
+    <h3>Vision Statement</h3>
+    <p>To be the leading family name in our region, recognised for unity, the love of God, financial resilience, and the active participation in shaping a prosperous future for the Prekebena name.</p>
+  </div>
+</section>
+
+<section class="core-values container">
   <h3>Core Values</h3>
   <ul>
     <li>Love & Respect – Treat every member with dignity.</li>
@@ -24,29 +43,17 @@
   </ul>
 </section>
 
-<section id="forms">
-  <div id="register">
-    <h3>Register</h3>
-    <form id="registerForm">
-      <input type="text" name="name" placeholder="Full Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="text" name="phone" placeholder="Phone Number" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <input type="file" id="profilePicture" accept="image/*" required>
-      <button type="submit">Register</button>
-    </form>
+<footer>
+  <div class="container">
+    <p>Contact us on WhatsApp: <a href="https://wa.me/2348033713873" target="_blank">+2348033713873</a></p>
+    <p>&copy; 2025 Prekebena Family Dynasty</p>
   </div>
+</footer>
 
-  <div id="login">
-    <h3>Login</h3>
-    <form id="loginForm">
-      <input type="email" name="email" placeholder="Email" required>
-      <input type="password" name="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-  </div>
-</section>
-
-<script src="script.js"></script>
+<script>
+  // Show current date in Nigeria
+  const nigeriaTime = new Date().toLocaleString("en-NG", { timeZone: "Africa/Lagos", weekday: 'long', year:'numeric', month:'long', day:'numeric' });
+  document.getElementById('currentDate').textContent = nigeriaTime;
+</script>
 </body>
 </html>
