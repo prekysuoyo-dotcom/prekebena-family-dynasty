@@ -1,54 +1,58 @@
-const WEB_APP_URL = "YOUR_GOOGLE_SHEET_WEB_APP_URL";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw3b-ldsgd7J6m8XGnD0ZPp-H_hpi-jYtg3Ay1s51Qbrlu2jY8FAWvALIz6MvYdAXWo/exec";
 
-// Hero Modal Logic
+// Modal
 const modal = document.getElementById('modal');
 const registerBtn = document.querySelector('.register-btn');
 const loginBtn = document.querySelector('.login-btn');
 const closeBtn = document.querySelector('.close');
-const modalRegister = document.getElementById('modal-register');
-const modalLogin = document.getElementById('modal-login');
+const modalRegister = document.getElementById('registerFormModal');
+const modalLogin = document.getElementById('loginFormModal');
 
-registerBtn.addEventListener('click', () => {
+registerBtn.onclick = () => {
   modal.style.display = 'flex';
   modalRegister.classList.add('active');
   modalLogin.classList.remove('active');
-});
-
-loginBtn.addEventListener('click', () => {
+};
+loginBtn.onclick = () => {
   modal.style.display = 'flex';
   modalLogin.classList.add('active');
   modalRegister.classList.remove('active');
-});
+};
+closeBtn.onclick = () => modal.style.display = 'none';
+window.onclick = e => { if(e.target === modal) modal.style.display='none'; };
 
-closeBtn.addEventListener('click', () => { modal.style.display = 'none'; });
-window.addEventListener('click', (e) => { if(e.target===modal) modal.style.display='none'; });
+// Current Date (Nigeria)
+const options = { timeZone: 'Africa/Lagos', weekday:'long', year:'numeric', month:'long', day:'numeric' };
+document.getElementById('current-date').innerText = new Date().toLocaleDateString('en-NG', options);
 
-// Register function
-async function register(form) {
-  const formData = new FormData(form);
-  formData.append('action','register');
-
-  const res = await fetch(WEB_APP_URL, { method:'POST', body: formData });
-  const result = await res.text();
-  alert(result);
-  form.reset();
-  modal.style.display = 'none';
+// Register
+async function register(form){
+  const data = new FormData(form);
+  data.append('action','register');
+  try{
+    const response = await fetch(WEB_APP_URL, { method:'POST', body:data });
+    const result = await response.text();
+    alert(result);
+    form.reset();
+    modal.style.display='none';
+  }catch(err){ alert("Registration failed: "+err); }
 }
 
-// Login function
-async function login(form) {
-  const formData = new FormData(form);
-  formData.append('action','login');
-
-  const res = await fetch(WEB_APP_URL, { method:'POST', body: formData });
-  const result = await res.json();
-  if(result.status==="success"){
-    if(result.role==="admin") window.location.href="admin.html";
-    else alert("Logged in successfully as member!");
-    modal.style.display = 'none';
-  } else alert("Invalid credentials");
+// Login
+async function login(form){
+  const data = new FormData(form);
+  data.append('action','login');
+  try{
+    const response = await fetch(WEB_APP_URL, { method:'POST', body:data });
+    const result = await response.json();
+    if(result.status==='success'){
+      alert("Login successful!");
+      if(result.role==='admin') window.location.href='admin.html';
+      else window.location.href='membership.html';
+      modal.style.display='none';
+    }else alert("Invalid email or password");
+  }catch(err){ alert("Login failed: "+err); }
 }
 
-// Event Listeners
-document.getElementById('registerFormModal').addEventListener('submit', e=>{ e.preventDefault(); register(e.target); });
-document.getElementById('loginFormModal').addEventListener('submit', e=>{ e.preventDefault(); login(e.target); });
+modalRegister.addEventListener('submit', e=>{ e.preventDefault(); register(e.target); });
+modalLogin.addEventListener('submit', e=>{ e.preventDefault(); login(e.target); });
