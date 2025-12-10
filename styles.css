@@ -1,8 +1,8 @@
-/* Reset */
+/* Reset & Base */
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family: 'Segoe UI', sans-serif; line-height:1.6; color:#333; background:#f4f4f9; }
 
-/* Containers */
+/* Container */
 .container { max-width:1200px; margin:0 auto; padding:1rem; }
 
 /* Header */
@@ -11,14 +11,9 @@ header h1 { font-size:2rem; margin-bottom:0.5rem; }
 header h2 { font-size:1.2rem; font-weight:400; margin-bottom:1rem; }
 header p { font-size:1rem; }
 
-/* Intro */
-.intro { text-align:center; margin:2rem 0; }
-.intro h2 { font-size:1.8rem; color:#0a9396; margin-bottom:0.5rem; }
-.intro .tagline { font-size:1.2rem; color:#94d2bd; margin-bottom:1rem; }
-
-/* Mission & Vision */
-.mission-vision { display:flex; flex-wrap:wrap; gap:1rem; margin:2rem 0; }
-.mission-vision .card { flex:1 1 45%; background:#fff; padding:1.5rem; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+/* Info Cards (Mission & Vision) */
+.info { display:flex; flex-wrap:wrap; gap:1rem; margin:2rem 0; }
+.info .card { flex:1 1 45%; background:#fff; padding:1.5rem; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
 
 /* Core Values */
 .core-values { background:#e9f1f7; padding:2rem 1rem; border-radius:10px; margin:2rem 0; }
@@ -28,16 +23,10 @@ header p { font-size:1rem; }
 /* Footer */
 footer { background:#001219; color:#fff; text-align:center; padding:1.5rem 1rem; margin-top:2rem; }
 footer a { color:#94d2bd; text-decoration:none; }
+.whatsapp-icon { width:24px; height:24px; vertical-align:middle; margin-right:0.5rem; }
 
 /* Responsive */
 @media (max-width:768px){
-  .mission-vision { flex-direction:column; }
-  .mission-vision .card { flex:1 1 100%; }
-}
-/* WhatsApp icon */
-.whatsapp-icon {
-  width: 24px;       /* adjust size if needed */
-  height: 24px;
-  vertical-align: middle;
-  margin-right: 0.5rem;
+  .info { flex-direction:column; }
+  .info .card { flex:1 1 100%; }
 }
