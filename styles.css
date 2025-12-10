@@ -1,70 +1,38 @@
-/* General */
-* { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
-body { line-height:1.6; color:#333; }
-.container { width:90%; max-width:1200px; margin:0 auto; }
+/* Reset & base */
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif; }
+body { line-height: 1.6; background-color: #f4f4f4; color: #333; }
 
-/* Hero Section */
-.hero { display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; padding:5rem 1rem; background:#f2f2f2; }
-.hero h1 { font-size:2.5rem; margin-bottom:1rem; color:#005f73; }
-.hero h2 { font-size:1.5rem; margin-bottom:1rem; color:#0a9396; }
-.hero #currentDate { font-size:1rem; margin-bottom:1.5rem; color:#333; }
+/* Hero */
+.hero { background: #1e3a8a; color: #fff; text-align: center; padding: 60px 20px; position: relative; }
+.hero h1.motto { font-size: 2em; margin-bottom: 10px; }
+.hero h2.slogan { font-size: 1.2em; margin-bottom: 20px; font-weight: 400; }
+.hero .whatsapp-icon { width: 50px; height: 50px; cursor: pointer; margin-right: 10px; vertical-align: middle; }
+.hero button { margin: 5px; padding: 10px 20px; font-size: 1em; cursor: pointer; border: none; border-radius: 5px; }
+.hero button.register-btn { background: #10b981; color: #fff; }
+.hero button.login-btn { background: #3b82f6; color: #fff; }
 
-/* Hero Buttons */
-.hero-buttons { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
-.hero-buttons .btn { display:flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; font-weight:600; border-radius:10px; cursor:pointer; border:none; text-decoration:none; color:#fff; background:#005f73; transition:0.3s; }
-.hero-buttons .btn:hover { background:#0a9396; }
-.whatsapp-icon { width:24px; height:24px; }
-
-/* Info Cards */
-.info { display:flex; flex-wrap:wrap; gap:1rem; margin:3rem 0; }
-.info .card { flex:1 1 300px; background:#fff; padding:2rem; border-radius:15px; box-shadow:0 5px 15px rgba(0,0,0,0.1); }
-
-/* Core Values */
-.core-values { margin-bottom:3rem; }
-.core-values h3 { text-align:center; margin-bottom:2rem; color:#005f73; }
-.values-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1rem; }
-.value-card { background:#e0fbfc; padding:1.5rem; border-radius:15px; text-align:center; }
-.value-card h4 { color:#0a9396; margin-bottom:0.5rem; }
+/* Sections */
+section { padding: 40px 20px; max-width: 800px; margin: auto; background: #fff; margin-bottom: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);}
+section h2 { color: #1e3a8a; margin-bottom: 10px; }
+section ul { list-style-type: disc; margin-left: 20px; }
+section ul li { margin-bottom: 8px; }
 
 /* Footer */
-footer { background:#005f73; color:#fff; padding:1rem 0; text-align:center; font-size:0.9rem; }
+footer { text-align: center; padding: 20px; background: #1e3a8a; color: #fff; }
+
+/* Modal */
+.modal { display: none; position: fixed; top: 0; left:0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; }
+.modal-content { background: #fff; padding: 20px; border-radius: 10px; width: 90%; max-width: 400px; position: relative; }
+.modal-content .close { position: absolute; top: 10px; right: 15px; font-size: 1.5em; cursor: pointer; }
+.modal-form { display: none; flex-direction: column; }
+.modal-form.active { display: flex; }
+.modal-form input { margin: 10px 0; padding: 10px; font-size: 1em; border-radius: 5px; border: 1px solid #ccc; }
+.modal-form button { padding: 10px; background: #1e3a8a; color: #fff; border: none; border-radius: 5px; cursor: pointer; }
+.modal-form button:hover { background: #2563eb; }
 
 /* Responsive */
-@media(max-width:768px) {
-  .hero h1 { font-size:2rem; }
-  .hero h2 { font-size:1.2rem; }
+@media (max-width: 600px) {
+  .hero h1.motto { font-size: 1.5em; }
+  .hero h2.slogan { font-size: 1em; }
+  .hero button { font-size: 0.9em; padding: 8px 15px; }
 }
-/* Hero Buttons */
-.hero-buttons { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
-.hero-buttons .btn { display:flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; font-weight:600; border-radius:10px; cursor:pointer; border:none; text-decoration:none; color:#fff; background:#005f73; transition:0.3s; }
-.hero-buttons .btn:hover { background:#0a9396; }
-.whatsapp-icon { width:24px; height:24px; }
-
-/* Modal */
-.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000; }
-.modal-content { background:#fff; padding:2rem; border-radius:15px; max-width:400px; width:90%; position:relative; }
-.modal-form { display:none; }
-.modal-form.active { display:block; }
-.close { position:absolute; top:10px; right:15px; font-size:1.5rem; cursor:pointer; }
-
-/* Form inside modal */
-.modal-form form input, .modal-form form button { display:block; width:100%; margin:0.5rem 0; padding:0.75rem; border-radius:8px; border:1px solid #ccc; }
-.modal-form form button { background:#005f73; color:#fff; font-weight:600; cursor:pointer; border:none; transition:0.3s; }
-.modal-form form button:hover { background:#0a9396; }
-/* Hero Buttons */
-.hero-buttons { display:flex; justify-content:center; gap:1rem; flex-wrap:wrap; }
-.hero-buttons .btn { display:flex; align-items:center; gap:0.5rem; padding:0.75rem 1.5rem; font-weight:600; border-radius:10px; cursor:pointer; border:none; text-decoration:none; color:#fff; background:#005f73; transition:0.3s; }
-.hero-buttons .btn:hover { background:#0a9396; }
-.whatsapp-icon { width:24px; height:24px; }
-
-/* Modal */
-.modal { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); justify-content:center; align-items:center; z-index:1000; }
-.modal-content { background:#fff; padding:2rem; border-radius:15px; max-width:400px; width:90%; position:relative; }
-.modal-form { display:none; }
-.modal-form.active { display:block; }
-.close { position:absolute; top:10px; right:15px; font-size:1.5rem; cursor:pointer; }
-
-/* Form inside modal */
-.modal-form form input, .modal-form form button { display:block; width:100%; margin:0.5rem 0; padding:0.75rem; border-radius:8px; border:1px solid #ccc; }
-.modal-form form button { background:#005f73; color:#fff; font-weight:600; cursor:pointer; border:none; transition:0.3s; }
-.modal-form form button:hover { background:#0a9396; }
