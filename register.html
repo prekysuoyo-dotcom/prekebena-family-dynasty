@@ -68,6 +68,9 @@ document.getElementById("registerBtn").addEventListener("click", () => {
     .then(res => res.json())
     .then(data => {
         if(data.status === "success"){
+            // Set flag to show toast on home page
+            sessionStorage.setItem("registrationSuccess", "true");
+            // Redirect to home page after 3.5s
             document.getElementById("message").innerText = "Registration successful! Email with login details has been sent.";
             setTimeout(() => { window.location.href = "index.html"; }, 3500);
         } else if(data.status === "exists") {
@@ -76,7 +79,10 @@ document.getElementById("registerBtn").addEventListener("click", () => {
             document.getElementById("message").innerText = "Something went wrong. Please try again.";
         }
     })
-    .catch(err => console.error(err));
+    .catch(err => {
+        console.error(err);
+        document.getElementById("message").innerText = "Error connecting to server. Please try again later.";
+    });
 });
 </script>
 
