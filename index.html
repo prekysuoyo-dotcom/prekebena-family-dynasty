@@ -2,8 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Prekebena Family Dynasty</title>
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <link rel="stylesheet" href="styles.css">
 
@@ -71,17 +74,15 @@
             padding-left: 10px;
         }
 
-        .core-list li {
-            margin-bottom: 8px;
-        }
-
-        .date-display {
+        footer {
             text-align: center;
-            margin-top: 10px;
-            font-weight: bold;
+            padding: 15px;
+            margin-top: 40px;
+            background: #022c43;
+            color: white;
+            font-weight: 600;
         }
 
-        /* WhatsApp floating button */
         .whatsapp-btn {
             position: fixed;
             bottom: 20px;
@@ -92,46 +93,6 @@
             width: 60px;
             height: 60px;
         }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-            background: #022c43;
-            color: white;
-            font-weight: 600;
-        }
-
-        /* Toast Notification */
-        #toast {
-            visibility: hidden;
-            min-width: 250px;
-            margin-left: -125px;
-            background-color: #022c43;
-            color: #fff;
-            text-align: center;
-            border-radius: 8px;
-            padding: 16px;
-            position: fixed;
-            z-index: 1000;
-            left: 50%;
-            bottom: 30px;
-            font-weight: bold;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-        }
-
-        @media (max-width: 600px) {
-            header img {
-                width: 90px;
-            }
-            .top-buttons a {
-                padding: 8px 12px;
-                font-size: 14px;
-            }
-            .headline-year {
-                font-size: 20px;
-            }
-        }
     </style>
 </head>
 <body>
@@ -141,8 +102,6 @@
 
     <h1>Prekebena Family Dynasty</h1>
 
-    <div class="headline-year">2025 Prekebena Family Dynasty</div>
-
     <p class="motto">“Together we rise, together we thrive.”</p>
 
     <div class="top-buttons">
@@ -150,10 +109,6 @@
         <a href="login.html">Login</a>
     </div>
 </header>
-
-<div class="date-display">
-    Today’s Date: <span id="ng-date"></span>
-</div>
 
 <div class="container">
     <h2>Our Mission</h2>
@@ -168,7 +123,7 @@
     </p>
 
     <h2>Core Values</h2>
-    <ul class="core-list">
+    <ul>
         <li><strong>Love & Respect:</strong> Treat every member with dignity.</li>
         <li><strong>Integrity:</strong> Honest dealings in all financial and relational matters.</li>
         <li><strong>Collaboration:</strong> Work together across ages and branches.</li>
@@ -182,34 +137,28 @@
     <img src="assets/download.png" alt="WhatsApp">
 </a>
 
-<!-- Toast Notification -->
-<div id="toast">Registration successful! Check your email for login details.</div>
-
 <footer>
     2025 Prekebena Family Dynasty
 </footer>
 
 <script>
-    // Nigerian Date Display
-    const options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric', 
-        timeZone: 'Africa/Lagos' 
-    };
-    document.getElementById("ng-date").innerText =
+    // Display Nigeria date
+    const options = { weekday:'long', year:'numeric', month:'long', day:'numeric', timeZone:'Africa/Lagos' };
+    document.getElementById("ng-date")?.innerText =
         new Date().toLocaleDateString("en-NG", options);
 
-    // Show toast if registration just happened
-    window.addEventListener("DOMContentLoaded", () => {
-        if(sessionStorage.getItem("registrationSuccess")){
-            const toast = document.getElementById("toast");
-            toast.style.visibility = "visible";
-            setTimeout(() => { toast.style.visibility = "hidden"; }, 4000);
-            sessionStorage.removeItem("registrationSuccess");
-        }
-    });
+    // Check if user was redirected after registration
+    if (sessionStorage.getItem("registrationSuccess") === "true") {
+        sessionStorage.removeItem("registrationSuccess");
+
+        Swal.fire({
+            title: "Registration Successful!",
+            text: "Thank you for joining the Prekebena Family Dynasty. Your login details have been sent to your email.",
+            icon: "success",
+            confirmButtonText: "OK",
+            confirmButtonColor: "#022c43"
+        });
+    }
 </script>
 
 </body>
