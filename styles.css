@@ -1,5 +1,6 @@
+/* HERO BANNER */
 .hero-banner {
-  background: #007bff; /* Attractive blue banner */
+  background: #007bff;
   color: white;
   text-align: center;
   padding: 60px 20px;
@@ -31,6 +32,7 @@
   color: #007bff;
 }
 
+/* CARDS SECTION */
 .cards-section {
   display: flex;
   flex-wrap: wrap;
