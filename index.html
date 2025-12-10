@@ -26,6 +26,7 @@
         header img {
             width: 120px;
             margin-bottom: 10px;
+            border-radius: 10px;
         }
 
         .top-buttons {
@@ -43,6 +44,19 @@
             color: #000;
             font-weight: 600;
             box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .headline-year {
+            font-size: 24px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .motto {
+            font-style: italic;
+            margin-top: 5px;
+            font-size: 16px;
+            opacity: 0.9;
         }
 
         .container {
@@ -87,6 +101,9 @@
                 padding: 8px 12px;
                 font-size: 14px;
             }
+            .headline-year {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -97,7 +114,9 @@
 
     <h1>Prekebena Family Dynasty</h1>
 
-    <p><em>United we stand, prosperous we grow.</em></p>
+    <div class="headline-year">2025 Prekebena Family Dynasty</div>
+
+    <p class="motto">“Together we rise, together we thrive.”</p>
 
     <div class="top-buttons">
         <a href="register.html">Register</a>
@@ -138,8 +157,15 @@
 
 <script>
     // Nigerian Date Display
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric', timeZone: 'Africa/Lagos' };
-    document.getElementById("ng-date").innerText = new Date().toLocaleDateString("en-NG", options);
+    const options = { 
+        weekday: 'long', 
+        year: 'numeric', 
+        month: 'long', 
+        day: 'numeric', 
+        timeZone: 'Africa/Lagos' 
+    };
+    document.getElementById("ng-date").innerText =
+        new Date().toLocaleDateString("en-NG", options);
 </script>
 
 </body>
