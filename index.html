@@ -1,38 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Prekebena Family Dynasty</title>
-  <style>
-    body { font-family: Arial, sans-serif; line-height: 1.6; background: #f9f9f9; color: #333; margin: 0; padding: 0; }
-    header { background: #004080; color: #fff; padding: 1rem; text-align: center; }
-    nav a { color: #fff; margin: 0 0.5rem; text-decoration: none; font-weight: bold; }
-    nav a:hover { text-decoration: underline; }
-    main { padding: 1rem; }
-    footer { text-align: center; padding: 1rem; background: #222; color: #fff; position: relative; bottom: 0; width: 100%; }
-  </style>
+
+  <!-- Link to external CSS (we will add styles.css next) -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Google font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- SweetAlert2 for nice modals -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
-  <header>
-    <h1>Prekebena Family Dynasty</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="about.html">About</a>
-      <a href="membership.html">Membership</a>
-      <a href="meetings.html">Meetings</a>
-      <a href="finances.html">Finances</a>
-    </nav>
+
+  <!-- NAVBAR -->
+  <nav class="nav">
+    <div class="nav-left">
+      <img src="assets/logo.png" alt="Prekebena Logo" class="logo-img">
+      <span class="brand">Prekebena Family Dynasty</span>
+    </div>
+    <div class="nav-right">
+      <button class="btn-outline" onclick="openLogin()">Login</button>
+      <button class="btn-primary" onclick="openSignup()">Create Account</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <img src="assets/hero.jpg" alt="Family" class="hero-img">
+    <div class="hero-overlay">
+      <h1>Welcome to the Prekebena Family Dynasty</h1>
+      <p>United in Love • Strength • Legacy • Greatness</p>
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="openSignup()">Join the Dynasty</button>
+        <a class="btn-outline" href="about.html">Learn more</a>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <h2>Welcome to the Prekebena Family Dynasty</h2>
-    <p>Uniting all Prekebena family members across generations. Together we rise, together we thrive.</p>
-    <p>Use the menu above to explore our mission, values, and family information.</p>
-  </main>
+  <!-- SHORT DESCRIPTION -->
+  <section class="section description">
+    <h2>About the Dynasty</h2>
+    <p>
+      The Prekebena Family Dynasty stands for unity, growth, heritage, and strength.
+      We preserve our legacy, empower members, and build a caring community.
+    </p>
+  </section>
 
-  <footer>
+  <!-- FOOTER with WhatsApp -->
+  <footer class="footer">
+    <div>
+      <a href="https://wa.me/234XXXXXXXXXX" target="_blank" title="Join our WhatsApp group">
+        <img src="assets/whatsapp.png" alt="WhatsApp" class="whatsapp-img">
+      </a>
+    </div>
     <p>&copy; 2025 Prekebena Family Dynasty</p>
   </footer>
+
+  <!-- Link to external JS (we will add script.js next) -->
+  <script src="script.js"></script>
 </body>
 </html>
