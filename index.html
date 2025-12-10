@@ -1,130 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Prekebena Family Dynasty</title>
-
-    <link rel="stylesheet" href="styles.css">
-
-    <style>
-        body {
-            font-family: "Inter", sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f9fc;
-            color: #222;
-        }
-
-        header {
-            background: #022c43;
-            color: white;
-            padding: 20px 10px;
-            text-align: center;
-        }
-
-        header img {
-            width: 120px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-        }
-
-        .top-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .top-buttons a {
-            background: #ffcf33;
-            padding: 10px 18px;
-            border-radius: 6px;
-            text-decoration: none;
-            color: #000;
-            font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .headline-year {
-            font-size: 24px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .motto {
-            font-style: italic;
-            margin-top: 5px;
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .container {
-            padding: 20px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        h2 {
-            color: #022c43;
-            border-left: 4px solid #ffcf33;
-            padding-left: 10px;
-        }
-
-        .core-list li {
-            margin-bottom: 8px;
-        }
-
-        .date-display {
-            text-align: center;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        /* WhatsApp floating button */
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-        }
-
-        .whatsapp-btn img {
-            width: 60px;
-            height: 60px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-            background: #022c43;
-            color: white;
-            font-weight: 600;
-        }
-
-        @media (max-width: 600px) {
-            header img {
-                width: 90px;
-            }
-            .top-buttons a {
-                padding: 8px 12px;
-                font-size: 14px;
-            }
-            .headline-year {
-                font-size: 20px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prekebena Family Dynasty</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+    body { font-family: 'Inter', sans-serif; margin:0; padding:0; background:#f8f9fc; color:#222; }
+    header { background:#022c43; color:white; text-align:center; padding:25px 10px; }
+    header img { width:120px; border-radius:10px; margin-bottom:10px; }
+    .headline-year { font-weight:bold; font-size:24px; margin-top:5px; }
+    .motto { font-style:italic; opacity:0.9; margin-top:5px; }
+    .top-buttons { margin-top:15px; display:flex; justify-content:center; gap:15px; }
+    .top-buttons a { background:#ffcf33; padding:10px 18px; border-radius:6px; font-weight:600; color:#000; text-decoration:none; box-shadow:0 2px 4px rgba(0,0,0,0.2); }
+    .top-buttons a:hover { background:#e6b800; }
+    .container { max-width:900px; margin:auto; padding:25px; }
+    h2 { color:#022c43; border-left:4px solid #ffcf33; padding-left:10px; margin-top:20px; }
+    ul.core-list li { margin-bottom:8px; }
+    .date-display { text-align:center; font-weight:bold; margin-top:10px; }
+    .whatsapp-btn { position:fixed; bottom:20px; right:20px; }
+    .whatsapp-btn img { width:60px; height:60px; }
+    footer { text-align:center; background:#022c43; color:white; padding:15px; font-weight:600; margin-top:40px; }
+    @media(max-width:600px){ header img{width:90px;} .top-buttons a{padding:8px 12px;font-size:14px;} .headline-year{font-size:20px;} }
+</style>
 </head>
 <body>
 
 <header>
     <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Family Logo">
-
     <h1>Prekebena Family Dynasty</h1>
-
+    <div class="headline-year">2025 Prekebena Family Dynasty</div>
     <p class="motto">“Together we rise, together we thrive.”</p>
-
     <div class="top-buttons">
         <a href="registration.html">Register</a>
         <a href="login.html">Login</a>
@@ -137,15 +43,10 @@
 
 <div class="container">
     <h2>Our Mission</h2>
-    <p>
-        To build a united, financially empowered, and prosperous Prekebena family 
-        through cooperation, love, transparency, and collective progress.
-    </p>
+    <p>To build a united, financially empowered, and prosperous Prekebena family through cooperation, love, transparency, and collective progress.</p>
 
     <h2>Our Vision</h2>
-    <p>
-        A globally recognized family dynasty rooted in unity, growth, and generational success.
-    </p>
+    <p>A globally recognized family dynasty rooted in unity, growth, and generational success.</p>
 
     <h2>Core Values</h2>
     <ul class="core-list">
@@ -157,7 +58,6 @@
     </ul>
 </div>
 
-<!-- WhatsApp Button -->
 <a class="whatsapp-btn" href="https://wa.me/2348033713873" target="_blank">
     <img src="assets/download.png" alt="WhatsApp">
 </a>
@@ -167,16 +67,8 @@
 </footer>
 
 <script>
-    // Nigerian Date Display
-    const options = { 
-        weekday: 'long', 
-        year: 'numeric', 
-        month: 'long', 
-        day: 'numeric', 
-        timeZone: 'Africa/Lagos' 
-    };
-    document.getElementById("ng-date").innerText =
-        new Date().toLocaleDateString("en-NG", options);
+    const options = { weekday:'long', year:'numeric', month:'long', day:'numeric', timeZone:'Africa/Lagos' };
+    document.getElementById("ng-date").innerText = new Date().toLocaleDateString("en-NG", options);
 </script>
 
 </body>
