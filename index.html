@@ -1,164 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Prekebena Family Dynasty</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register - Prekebena Family Dynasty</title>
 
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    <link rel="stylesheet" href="styles.css">
-
-    <style>
-        body {
-            font-family: "Inter", sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f8f9fc;
-            color: #222;
-        }
-
-        header {
-            background: #022c43;
-            color: white;
-            padding: 20px 10px;
-            text-align: center;
-        }
-
-        header img {
-            width: 120px;
-            margin-bottom: 10px;
-            border-radius: 10px;
-        }
-
-        .top-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .top-buttons a {
-            background: #ffcf33;
-            padding: 10px 18px;
-            border-radius: 6px;
-            text-decoration: none;
-            color: #000;
-            font-weight: 600;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-        }
-
-        .headline-year {
-            font-size: 24px;
-            margin-top: 10px;
-            font-weight: bold;
-        }
-
-        .motto {
-            font-style: italic;
-            margin-top: 5px;
-            font-size: 16px;
-            opacity: 0.9;
-        }
-
-        .container {
-            padding: 20px;
-            max-width: 900px;
-            margin: auto;
-        }
-
-        h2 {
-            color: #022c43;
-            border-left: 4px solid #ffcf33;
-            padding-left: 10px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 15px;
-            margin-top: 40px;
-            background: #022c43;
-            color: white;
-            font-weight: 600;
-        }
-
-        .whatsapp-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-        }
-
-        .whatsapp-btn img {
-            width: 60px;
-            height: 60px;
-        }
-    </style>
+  <style>
+    body { font-family:"Inter", sans-serif; margin:0; padding:0; background:#f8f9fc; }
+    .container { max-width:500px; margin:50px auto; background:white; padding:25px; border-radius:10px; box-shadow:0 2px 10px rgba(0,0,0,0.1);}
+    h2 { text-align:center; color:#022c43; margin-bottom:20px; }
+    .form-group { margin-bottom:15px; }
+    .form-group label { display:block; margin-bottom:5px; font-weight:600; }
+    .form-group input { width:100%; padding:10px; border:1px solid #ccc; border-radius:6px; }
+    button { width:100%; padding:12px; background:#ffcf33; border:none; border-radius:6px; font-weight:bold; cursor:pointer; }
+    button:hover { background:#e6b800; }
+    .message { text-align:center; margin-top:15px; font-weight:bold; color:#022c43; }
+    a { text-decoration:none; color:#022c43; display:block; text-align:center; margin-top:10px; }
+  </style>
 </head>
 <body>
 
-<header>
-    <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Family Logo">
-
-    <h1>Prekebena Family Dynasty</h1>
-
-    <p class="motto">“Together we rise, together we thrive.”</p>
-
-    <div class="top-buttons">
-        <a href="registration.html">Register</a>
-        <a href="login.html">Login</a>
-    </div>
-</header>
-
 <div class="container">
-    <h2>Our Mission</h2>
-    <p>
-        To build a united, financially empowered, and prosperous Prekebena family 
-        through cooperation, love, transparency, and collective progress.
-    </p>
+  <h2>Register</h2>
 
-    <h2>Our Vision</h2>
-    <p>
-        A globally recognized family dynasty rooted in unity, growth, and generational success.
-    </p>
+  <div class="form-group">
+    <label for="name">Full Name</label>
+    <input type="text" id="name" required>
+  </div>
 
-    <h2>Core Values</h2>
-    <ul>
-        <li><strong>Love & Respect:</strong> Treat every member with dignity.</li>
-        <li><strong>Integrity:</strong> Honest dealings in all financial and relational matters.</li>
-        <li><strong>Collaboration:</strong> Work together across ages and branches.</li>
-        <li><strong>Commitment:</strong> Fulfil obligations promptly and responsibly.</li>
-        <li><strong>Continuous Improvement:</strong> Learn, adapt, and grow as a family.</li>
-    </ul>
+  <div class="form-group">
+    <label for="email">Email Address</label>
+    <input type="email" id="email" required>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" required>
+  </div>
+
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" id="password" required>
+  </div>
+
+  <div class="form-group">
+    <label for="profilePicture">Profile Picture URL (optional)</label>
+    <input type="text" id="profilePicture" placeholder="Enter image URL">
+  </div>
+
+  <button id="registerBtn">Register</button>
+
+  <div class="message" id="message"></div>
+
+  <a href="login.html">Already have an account? Login</a>
 </div>
 
-<!-- WhatsApp Button -->
-<a class="whatsapp-btn" href="https://wa.me/2348033713873" target="_blank">
-    <img src="assets/download.png" alt="WhatsApp">
-</a>
-
-<footer>
-    2025 Prekebena Family Dynasty
-</footer>
-
 <script>
-    // Display Nigeria date
-    const options = { weekday:'long', year:'numeric', month:'long', day:'numeric', timeZone:'Africa/Lagos' };
-    document.getElementById("ng-date")?.innerText =
-        new Date().toLocaleDateString("en-NG", options);
+  const webAppURL = "https://script.google.com/macros/s/AKfycbyDOQgnQQQZlverxZJDGlhXu9oVSMMJux_zACNsZvaKXSl48ecQLOuOljjWbOPRkj3I/exec";
 
-    // Check if user was redirected after registration
-    if (sessionStorage.getItem("registrationSuccess") === "true") {
-        sessionStorage.removeItem("registrationSuccess");
+  document.getElementById("registerBtn").addEventListener("click", async () => {
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const profilePicture = document.getElementById("profilePicture").value.trim();
 
-        Swal.fire({
-            title: "Registration Successful!",
-            text: "Thank you for joining the Prekebena Family Dynasty. Your login details have been sent to your email.",
-            icon: "success",
-            confirmButtonText: "OK",
-            confirmButtonColor: "#022c43"
-        });
+    if (!name || !email || !phone || !password) {
+      document.getElementById("message").innerText = "All fields except profile picture are required.";
+      return;
     }
+
+    const form = new URLSearchParams();
+    form.append("action", "register");
+    form.append("name", name);
+    form.append("email", email);
+    form.append("phone", phone);
+    form.append("password", password);
+    form.append("imageUrl", profilePicture);
+
+    try {
+      const res = await fetch(webAppURL, {
+        method: "POST",
+        body: form,
+        headers: { "Content-Type": "application/x-www-form-urlencoded" }
+      });
+
+      const data = await res.json();
+
+      if (data.status === "success") {
+        sessionStorage.setItem("registrationSuccess", "true");
+        document.getElementById("message").innerText = "Registration successful! Please wait...";
+        
+        setTimeout(() => {
+          window.location.href = "home.html";  // <-- FIXED REDIRECT
+        }, 2500);
+
+      } else if (data.status === "exists") {
+        document.getElementById("message").innerText = data.message;
+
+      } else {
+        document.getElementById("message").innerText = "Something went wrong. Please try again.";
+      }
+
+    } catch (err) {
+      console.error(err);
+      document.getElementById("message").innerText = "Error connecting to server. Try again later.";
+    }
+  });
 </script>
 
 </body>
