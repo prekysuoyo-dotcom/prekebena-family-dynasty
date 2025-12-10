@@ -1,33 +1,87 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Register - Prekebena Family Dynasty</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Prekebena Family Dynasty</title>
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        body {
+            background: #f3f5fa;
+            font-family: "Inter", sans-serif;
+        }
+
+        .form-container {
+            max-width: 450px;
+            margin: 40px auto;
+            padding: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        h2 {
+            text-align: center;
+            color: #022c43;
+        }
+
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 15px;
+        }
+
+        button {
+            background: #022c43;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #033959;
+        }
+
+        .back-home {
+            text-align: center;
+            margin-top: 12px;
+        }
+
+        .back-home a {
+            text-decoration: none;
+            color: #022c43;
+            font-weight: bold;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="container">
-    <h2>Create Your Family Account</h2>
+<div class="form-container">
+    <h2>Register</h2>
 
     <form id="registerForm">
-        <input type="text" id="fullname" placeholder="Full Name" required>
-        <input type="text" id="email" placeholder="Email Address" required>
-        <input type="text" id="phone" placeholder="Phone Number" required>
+        <input type="text" id="name" placeholder="Full Name" required>
+        <input type="email" id="email" placeholder="Email Address" required>
+        <input type="tel" id="phone" placeholder="Phone Number" required>
         <input type="password" id="password" placeholder="Create Password" required>
 
-        <button type="submit" class="btn">Register</button>
+        <button type="submit">Register</button>
     </form>
 
-    <p>Already registered?  
-        <a href="login.html">Login here</a>
-    </p>
+    <div class="back-home">
+        <a href="index.html">← Back to Home</a>
+    </div>
 </div>
 
 <script src="script.js"></script>
+<script>
+    const API_URL = "https://script.google.com/macros/s/AKfycbw3b-ldsgd7J6m8XGnD0ZPp-H_hpi-jYtg3Ay1s51Qbrlu2jY8FAWvALIz6MvYdAXWo/exec";
+</script>
+
 </body>
 </html>
