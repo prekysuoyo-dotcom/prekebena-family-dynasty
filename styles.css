@@ -1,36 +1,53 @@
-* { box-sizing: border-box; margin:0; padding:0; }
-body { font-family: Arial, sans-serif; color: #333; }
-.top-motto { background:#0066cc; color:#fff; text-align:center; padding:12px; font-weight:600; }
-.navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 20px; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+* { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:'Poppins',sans-serif; color:#333; line-height:1.6; }
+
+/* TOP BANNER */
+.top-banner { background:#0066cc; color:#fff; text-align:center; padding:12px; font-weight:600; font-size:1.2rem; }
+
+/* NAVBAR */
+.navbar { display:flex; justify-content:space-between; align-items:center; padding:15px 30px; background:#fff; box-shadow:0 2px 6px rgba(0,0,0,0.1);}
 .logo { height:50px; margin-right:10px; }
-.brand-name { font-size:1.3rem; font-weight:600; }
-.nav-buttons button { margin-left:10px; padding:8px 16px; border:none; border-radius:6px; cursor:pointer; }
-.btn-primary { background:#0066cc; color:white; }
-.btn-outline { background:transparent; border:2px solid #0066cc; color:#0066cc; }
-.btn-primary:hover, .btn-outline:hover { opacity:0.9; }
-.hero { background: linear-gradient(135deg,#0066cc, #00aaff); color:white; text-align:center; padding:80px 20px; }
-.hero-content h1 { font-size:2.5rem; margin-bottom:12px; }
-.hero-subtitle { font-size:1.1rem; margin-bottom:20px; }
-.btn-large { padding:12px 25px; font-size:1.1rem; border:none; border-radius:6px; cursor:pointer; }
-.container { max-width:1000px; margin:auto; padding:30px 20px; }
-.mission-vision { display:flex; flex-wrap:wrap; gap:20px; margin-bottom:40px; }
-.mission-vision .box { flex:1 1 300px; background:#f5f5f5; padding:20px; border-radius:8px; }
-.core-values { text-align:center; padding:40px 20px; }
-.core-values h2 { margin-bottom:20px; color:#0066cc; }
-.values-grid { display:grid; gap:20px; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); }
-.value-card { background:white; padding:20px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+.brand-name { font-weight:600; font-size:1.3rem; }
+.nav-buttons button { margin-left:10px; padding:8px 16px; border-radius:6px; border:none; cursor:pointer; }
+.btn-primary { background:#0066cc; color:#fff; }
+.btn-outline { background:#fff; color:#0066cc; border:2px solid #0066cc; }
+.btn-primary:hover { background:#004a99; }
+.btn-outline:hover { background:#004a99; color:#fff; }
+
+/* HERO */
+.hero { background: linear-gradient(135deg,#0066cc,#00aaff); color:white; text-align:center; padding:80px 20px; }
+.hero-content h1 { font-size:2.5rem; margin-bottom:15px; }
+.hero-subtitle { font-size:1.2rem; margin-bottom:25px; }
+.btn-large { padding:12px 25px; font-size:1.1rem; }
+
+/* MISSION & VISION */
+.mission-vision { display:flex; flex-wrap:wrap; gap:30px; max-width:1000px; margin:auto; padding:40px 20px; }
+.mission-vision .box { flex:1 1 300px; background:#f5f5f5; padding:20px; border-radius:10px; }
+.mission-vision h2 { color:#0066cc; margin-bottom:10px; }
+
+/* CORE VALUES */
+.core-values { text-align:center; padding:50px 20px; }
+.core-values h2 { margin-bottom:30px; color:#0066cc; }
+.values-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:20px; }
+.value-card { background:#fff; padding:20px; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.1); }
 .value-card h3 { color:#0066cc; margin-bottom:10px; }
-.footer { text-align:center; padding:25px 20px; background:#fff; border-top:1px solid #ddd; }
-.footer .footer-slogan { margin-bottom:10px; color:#0066cc; font-weight:600; }
-.whatsapp-icon { width:50px; margin:10px auto; display:block; }
+
+/* ACCORDION */
+.accordion-section { max-width:900px; margin:auto; padding:40px 20px; }
+.accordion { background:#0066cc; color:#fff; cursor:pointer; padding:14px; width:100%; border:none; text-align:left; border-radius:6px; margin-bottom:5px; outline:none; font-size:16px; }
+.accordion.active, .accordion:hover { background:#004a99; }
+.panel { max-height:0; overflow:hidden; transition:max-height 0.3s ease-out; padding:0 15px; background:#f1f1f1; border-radius:0 0 6px 6px; margin-bottom:15px; }
+
+/* CTA */
+.cta-section { text-align:center; padding:50px 20px; background:#00aaff; color:#fff; }
+.cta-section h2 { margin-bottom:20px; }
+.cta-section button:hover { background:#004a99; }
+
+/* FOOTER */
+.footer { text-align:center; padding:25px; background:#fff; border-top:1px solid #ddd; }
+.footer .footer-slogan { color:#0066cc; font-weight:600; margin-bottom:10px; }
+.whatsapp-icon { width:50px; }
 
 /* RESPONSIVE */
-@media (max-width: 768px) {
-  .navbar { flex-direction: column; align-items: flex-start; }
-  .nav-buttons { margin-top:10px; }
-  .hero-content h1 { font-size:2rem; }
-}
-@media (max-width: 480px) {
-  .hero { padding:60px 15px; }
-  .btn-large { width:100%; }
-}
+@media(max-width:768px){ .mission-vision { flex-direction:column; } .hero-content h1{font-size:2rem;} }
+@media(max-width:480px){ .hero{padding:60px 15px;} .btn-large{width:100%;} }
