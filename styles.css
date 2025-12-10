@@ -1,20 +1,40 @@
-/* Forms */
-.forms { display:flex; flex-wrap:wrap; gap:2rem; margin:2rem 0; }
-.form-card { flex:1 1 45%; background:#fff; padding:1.5rem; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1); }
-form input, form button { display:block; width:100%; margin:0.5rem 0; padding:0.5rem; }
+/* Base */
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: 'Inter', sans-serif; background:#f9f9f9; color:#333; line-height:1.6; }
+.container { max-width:1200px; margin:0 auto; padding:1rem; }
 
-/* Admin Table */
-table { width:95%; margin:1rem auto; border-collapse:collapse; }
-th, td { padding:0.5rem; text-align:center; border:1px solid #ccc; }
-img { border-radius:50%; }
-
-/* WhatsApp icon */
+/* Hero */
+.hero { background: linear-gradient(135deg, #005f73, #0a9396); color:#fff; text-align:center; padding:4rem 1rem; border-radius:0 0 20px 20px; }
+.hero h1 { font-size:2.5rem; margin-bottom:0.5rem; }
+.hero h2 { font-size:1.5rem; font-weight:400; margin-bottom:1rem; }
+.hero p { font-size:1rem; margin-bottom:1.5rem; }
+.btn { text-decoration:none; display:inline-block; padding:0.75rem 1.5rem; border-radius:10px; font-weight:600; transition:0.3s; }
+.whatsapp-btn { background:#25d366; color:#fff; }
+.whatsapp-btn:hover { background:#1ebe57; }
 .whatsapp-icon { width:24px; height:24px; vertical-align:middle; margin-right:0.5rem; }
+
+/* Info Cards */
+.info { display:flex; flex-wrap:wrap; gap:1.5rem; margin:2rem 0; }
+.info .card { flex:1 1 45%; background:#fff; padding:1.5rem; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+
+/* Core Values */
+.core-values { margin:2rem 0; }
+.core-values h3 { text-align:center; color:#005f73; margin-bottom:1.5rem; font-size:2rem; }
+.values-grid { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; }
+.value-card { flex:1 1 200px; background:#fff; padding:1rem; border-radius:15px; box-shadow:0 2px 8px rgba(0,0,0,0.1); text-align:center; }
+
+/* Forms */
+.forms { display:flex; flex-wrap:wrap; gap:2rem; margin:2rem 0; justify-content:center; }
+.form-card { flex:1 1 350px; background:#fff; padding:2rem; border-radius:15px; box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+form input, form button { display:block; width:100%; margin:0.5rem 0; padding:0.75rem; border-radius:8px; border:1px solid #ccc; }
+form button { background:#005f73; color:#fff; font-weight:600; cursor:pointer; border:none; transition:0.3s; }
+form button:hover { background:#0a9396; }
+
+/* Footer */
+footer { background:#001219; color:#fff; text-align:center; padding:1.5rem; margin-top:2rem; }
 
 /* Responsive */
 @media(max-width:768px){
-  .forms { flex-direction:column; }
-  .form-card { flex:1 1 100%; }
-  table, thead, tbody, th, td, tr { display:block; }
-  td { text-align:left; padding:0.5rem; border:none; }
+  .info, .values-grid, .forms { flex-direction:column; }
+  .info .card, .value-card, .form-card { flex:1 1 100%; }
 }
