@@ -34,3 +34,10 @@ footer a { color:#94d2bd; text-decoration:none; }
   .mission-vision { flex-direction:column; }
   .mission-vision .card { flex:1 1 100%; }
 }
+/* WhatsApp icon */
+.whatsapp-icon {
+  width: 24px;       /* adjust size if needed */
+  height: 24px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+}
