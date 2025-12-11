@@ -1,177 +1,40 @@
+<!-- FILE: index.html -->
 <!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Member Dashboard - Prekebena Family Dynasty</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-    body {
-        font-family: 'Inter', sans-serif;
-        margin: 0;
-        background: #f4f6f9;
-    }
-    .header {
-        background: #003366;
-        padding: 20px;
-        color: #fff;
-        text-align: center;
-        font-size: 22px;
-        font-weight: 700;
-    }
-    .container {
-        padding: 20px;
-    }
-    .section-title {
-        font-size: 18px;
-        margin-bottom: 10px;
-        font-weight: 600;
-        color: #003366;
-    }
-    .card {
-        background: #fff;
-        padding: 15px;
-        border-radius: 10px;
-        margin-bottom: 20px;
-        box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-    }
-    .item {
-        margin-bottom: 12px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #ddd;
-    }
-    .item:last-child {
-        border-bottom: none;
-    }
-    .logout-btn {
-        display: block;
-        width: 100%;
-        background: #cc0000;
-        padding: 14px;
-        color: #fff;
-        border-radius: 8px;
-        font-size: 16px;
-        cursor: pointer;
-        text-align: center;
-        font-weight: 600;
-        margin-top: 20px;
-        border: none;
-    }
-    .loading {
-        text-align: center;
-        font-size: 16px;
-        padding: 20px;
-        color: #555;
-    }
-</style>
-
-<script>
-// Google Apps Script Backend
-const API_URL = "https://script.google.com/macros/s/AKfycby5Gxe34oODHBnTXdedZ20Wgi2kNqvJCHe7Rm1TAvjiaaPKJRnfv61MGgDEe6xExHJq/exec";
-
-// Redirect user if not logged in
-if (!sessionStorage.getItem("memberID")) {
-    window.location.href = "login.html";
-}
-
-// Load Announcements
-function loadAnnouncements() {
-    const box = document.getElementById("announcementList");
-    box.innerHTML = `<div class='loading'>Loading announcements...</div>`;
-
-    fetch(API_URL + "?action=getAnnouncements")
-        .then(res => res.json())
-        .then(data => {
-            if (!data || data.length === 0) {
-                box.innerHTML = "<p>No announcements available.</p>";
-                return;
-            }
-
-            let html = "";
-            data.forEach(item => {
-                html += `
-                    <div class="item">
-                        <strong>${item.title}</strong><br>
-                        <small>${item.date}</small><br>
-                        <p>${item.message}</p>
-                    </div>
-                `;
-            });
-            box.innerHTML = html;
-        })
-        .catch(() => {
-            box.innerHTML = "<p>Error loading announcements.</p>";
-        });
-}
-
-// Load Events
-function loadEvents() {
-    const box = document.getElementById("eventList");
-    box.innerHTML = `<div class='loading'>Loading events...</div>`;
-
-    fetch(API_URL + "?action=getEvents")
-        .then(res => res.json())
-        .then(data => {
-            if (!data || data.length === 0) {
-                box.innerHTML = "<p>No upcoming events.</p>";
-                return;
-            }
-
-            let html = "";
-            data.forEach(item => {
-                html += `
-                    <div class="item">
-                        <strong>${item.event}</strong><br>
-                        <small>${item.date}</small><br>
-                        <p>${item.description}</p>
-                    </div>
-                `;
-            });
-            box.innerHTML = html;
-        })
-        .catch(() => {
-            box.innerHTML = "<p>Error loading events.</p>";
-        });
-}
-
-// Logout
-function logout() {
-    sessionStorage.clear();
-    window.location.href = "login.html";
-}
-
-// On-page load
-window.onload = function () {
-    loadAnnouncements();
-    loadEvents();
-};
-</script>
+<link href="styles.css" rel="stylesheet">
 </head>
-
 <body>
-
-<div class="header">
-    Prekebena Family Dynasty Member Dashboard
+<div class="header">Prekebena Family Dynasty</div>
+<div class="container grid">
+<div>
+<div class="card">
+<div class="section-title"><h3>Announcements</h3><div class="controls"><button class="btn" onclick="location.href='admin.html'">Admin</button><button class="btn btn-ghost" onclick="toggleDark()">Toggle Dark</button></div></div>
+<div id="announcementList"></div>
 </div>
 
-<div class="container">
 
-    <!-- Announcements -->
-    <div class="card">
-        <div class="section-title">Announcements</div>
-        <div id="announcementList"></div>
-    </div>
-
-    <!-- Events -->
-    <div class="card">
-        <div class="section-title">Upcoming Events</div>
-        <div id="eventList"></div>
-    </div>
-
-    <button class="logout-btn" onclick="logout()">Logout</button>
+<div class="card">
+<div class="section-title"><h3>Upcoming Events</h3><div class="controls"><button class="btn" onclick="requestNotificationPermission()">Enable Notifications</button></div></div>
+<div id="eventList"></div>
+</div>
 </div>
 
+
+<aside class="sidebar card">
+<div class="kv"><strong id="memberName">Member</strong><span class="badge">Member</span></div>
+<p class="small">Welcome to the family dashboard. Use the Admin button to manage announcements and events (admins only).</p>
+<div style="margin-top:12px"><button class="btn logout-btn" onclick="sessionStorage.clear();location.href='login.html'">Logout</button></div>
+<hr style="margin:12px 0">
+<div>
+<h4 style="margin:0 0 8px 0">Members</h4>
+<div id="memberList" class="small">Loading members...</div>
+</div>
+</aside>
+</div>
+<script src="app.js"></script>
 </body>
 </html>
