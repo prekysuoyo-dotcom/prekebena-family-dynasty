@@ -1,92 +1,39 @@
-<!DOCTYPE html>
+<!-- FILE: login.html -->
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Login - Prekebena Family Dynasty</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<style>
-body { font-family:'Inter',sans-serif; margin:0; padding:0; background:#f4f4f4; }
-header { background:#022c43; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
-header .logo { display:flex; align-items:center; gap:12px; }
-header .logo img { width:50px; border-radius:8px; }
-header h1 { margin:0; font-size:20px; font-weight:700; }
-header nav a { color:white; text-decoration:none; margin-left:15px; padding:6px 12px; border-radius:5px; font-weight:600; transition:0.3s; }
-header nav a:hover { background:#ffcf33; color:#000; }
-
-.container { max-width:400px; margin:80px auto; background:white; padding:30px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
-h2 { text-align:center; font-size:26px; margin-bottom:20px; color:#022c43; }
-label { font-weight:600; margin-top:10px; display:block; }
-input { width:100%; padding:12px; margin-top:5px; border-radius:8px; border:1px solid #ccc; font-size:15px; }
-button { width:100%; background:#ffcf33; padding:14px; border:none; color:#000; margin-top:20px; border-radius:8px; font-size:16px; font-weight:600; cursor:pointer; transition:0.3s; }
-button:hover { background:#e6b800; }
-.back { text-align:center; margin-top:20px; }
-.back a { text-decoration:none; color:#022c43; font-weight:600; }
-</style>
+<link href="styles.css" rel="stylesheet">
 </head>
 <body>
-
-<header>
-    <div class="logo">
-        <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Family Logo">
-        <h1>Prekebena Family Dynasty</h1>
-    </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="registration.html">Register</a>
-    </nav>
-</header>
-
+<div class="header">Prekebena Login</div>
 <div class="container">
-    <h2>Member Login</h2>
-    <form id="loginForm">
-        <label>Email Address</label>
-        <input type="email" id="email" required>
-        <label>Password</label>
-        <input type="password" id="password" required>
-        <button type="submit">Login</button>
-    </form>
-    <div class="back">
-        <a href="registration.html">Don't have an account? Register</a>
-    </div>
+<div class="card" style="max-width:480px;margin:0 auto">
+<h3 style="margin-top:0">Sign in</h3>
+<div class="form-row">
+<input id="email" class="input" placeholder="Email" />
 </div>
-
+<div class="form-row">
+<input id="password" type="password" class="input" placeholder="Password" />
+</div>
+<div style="display:flex;gap:8px">
+<button class="btn" onclick="doLogin()">Login</button>
+<button class="btn btn-ghost" onclick="demoLogin()">Demo login</button>
+</div>
+</div>
+</div>
 <script>
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby5Gxe34oODHBnTXdedZ20Wgi2kNqvJCHe7Rm1TAvjiaaPKJRnfv61MGgDEe6xExHJq/exec";
-
-document.getElementById("loginForm").addEventListener("submit", async (e)=>{
-    e.preventDefault();
-    const email = document.getElementById("email").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    if(!email || !password){
-        Swal.fire({icon:'error', title:'Missing Fields', text:'Please enter email and password.'});
-        return;
-    }
-
-    const params = new URLSearchParams();
-    params.append("action","login");
-    params.append("email",email);
-    params.append("password",password);
-
-    try{
-        const res = await fetch(SCRIPT_URL,{ method:"POST", body:params, headers:{"Content-Type":"application/x-www-form-urlencoded"} });
-        const data = await res.json();
-
-        if(data.status==="success"){
-            sessionStorage.setItem("memberData", JSON.stringify(data));
-            Swal.fire({ icon:'success', title:'Login Successful!', timer:1500, showConfirmButton:false });
-            setTimeout(()=>{ window.location.href="membership.html"; },1500);
-        } else{
-            Swal.fire({ icon:'error', title:'Login Failed', text:'Invalid email or password.' });
-        }
-    } catch(err){
-        console.error(err);
-        Swal.fire({ icon:'error', title:'Connection Error', text:'Could not connect to server.' });
-    }
-});
+function doLogin(){
+// Replace this with real auth call to backend. For now we simulate.
+const email = document.getElementById('email').value.trim();
+if(!email){alert('Enter email');return}
+sessionStorage.setItem('memberID','demo-'+Date.now());
+sessionStorage.setItem('memberName', email.split('@')[0]);
+location.href='index.html';
+}
+function demoLogin(){ sessionStorage.setItem('memberID','demo-1'); sessionStorage.setItem('memberName','Demo User'); location.href='index.html'; }
 </script>
-
 </body>
 </html>
