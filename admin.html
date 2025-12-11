@@ -1,50 +1,55 @@
-<!DOCTYPE html>
+<!-- FILE: admin.html -->
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Admin Dashboard</title>
-<link rel="stylesheet" href="styles.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Admin - Prekebena Family Dynasty</title>
+<link href="styles.css" rel="stylesheet">
 </head>
 <body>
-<h1>Admin Dashboard</h1>
-<table border="1">
-  <thead>
-    <tr>
-      <th>Profile</th>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Phone</th>
-      <th>Registration Fee</th>
-      <th>Monthly Contribution</th>
-      <th>Special Dues</th>
-      <th>Notes</th>
-    </tr>
-  </thead>
-  <tbody id="membersTable"></tbody>
-</table>
+<div class="header">Prekebena Admin</div>
+<div class="container">
+<div class="card">
+<div class="section-title"><h3>Manage Announcements</h3><div class="controls"><button class="btn" onclick="adminLoadAll()">Refresh</button></div></div>
+<div style="display:flex;gap:12px">
+<div style="flex:1">
+<input id="annTitle" class="input" placeholder="Title" />
+<div class="form-row"><input id="annDate" class="input" type="date" /></div>
+<textarea id="annMessage" placeholder="Message" class="input"></textarea>
+<div style="display:flex;gap:8px;margin-top:8px"><button id="annSaveBtn" class="btn" onclick="saveAnnouncementEdit()">Save</button><button class="btn btn-ghost" onclick="document.getElementById('annTitle').value='';document.getElementById('annMessage').value='';document.getElementById('annDate').value=''">Clear</button></div>
+</div>
+<div style="flex:1">
+<table class="table"><thead><tr><th>Title</th><th>Date</th><th>Message</th><th>Actions</th></tr></thead><tbody id="annTableBody"><tr><td colspan="4" class="small">Loading...</td></tr></tbody></table>
+</div>
+</div>
+</div>
 
-<script>
-const WEB_APP_URL = "YOUR_WEB_APP_URL";
 
-fetch(WEB_APP_URL + "?action=getMembers")
-  .then(res => res.json())
-  .then(data => {
-    const table = document.getElementById('membersTable');
-    data.slice(1).forEach(member => {
-      const row = `<tr>
-        <td><img src="${member[9]}" width="50"/></td>
-        <td>${member[0]}</td>
-        <td>${member[1]}</td>
-        <td>${member[2]}</td>
-        <td>${member[4]}</td>
-        <td>${member[5]}</td>
-        <td>${member[6]}</td>
-        <td>${member[7]}</td>
-      </tr>`;
-      table.innerHTML += row;
-    });
-  });
-</script>
+<div class="card" style="margin-top:12px">
+<div class="section-title"><h3>Manage Events</h3></div>
+<div style="display:flex;gap:12px">
+<div style="flex:1">
+<input id="evtName" class="input" placeholder="Event name" />
+<div class="form-row"><input id="evtDate" class="input" type="date" /></div>
+<textarea id="evtDesc" placeholder="Description" class="input"></textarea>
+<div style="display:flex;gap:8px;margin-top:8px"><button id="evtSaveBtn" class="btn" onclick="saveEventEdit()">Save</button><button class="btn btn-ghost" onclick="document.getElementById('evtName').value='';document.getElementById('evtDesc').value='';document.getElementById('evtDate').value=''">Clear</button></div>
+</div>
+<div style="flex:1">
+<table class="table"><thead><tr><th>Event</th><th>Date</th><th>Description</th><th>Actions</th></tr></thead><tbody id="eventTableBody"><tr><td colspan="4" class="small">Loading...</td></tr></tbody></table>
+</div>
+</div>
+</div>
+
+
+<div class="card" style="margin-top:12px">
+<div class="section-title"><h3>Members</h3></div>
+<table class="table"><thead><tr><th>Photo</th><th>Name</th><th>Email</th><th>Phone</th></tr></thead><tbody id="memberTableBody"><tr><td colspan="4" class="small">Loading...</td></tr></tbody></table>
+</div>
+
+
+<div style="margin-top:12px;text-align:right"><button class="btn btn-ghost" onclick="location.href='index.html'">Back to Dashboard</button></div>
+</div>
+<script src="app.js"></script>
 </body>
 </html>
