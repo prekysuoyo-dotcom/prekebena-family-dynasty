@@ -1,199 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Register - Prekebena Family Dynasty</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <style>
-    body {
-        font-family: 'Inter', sans-serif;
-        background: #f4f4f4;
-        margin: 0;
-        padding: 0;
-    }
+body{font-family:'Inter',sans-serif;margin:0;padding:0;background:#f4f4f4;}
+header{background:#022c43;color:white;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
+header .logo{display:flex;align-items:center;gap:15px;}
+header .logo img{width:50px;border-radius:8px;}
+header h1{font-size:20px;margin:0;font-weight:700;}
+header nav a{color:white;text-decoration:none;margin-left:15px;padding:6px 12px;border-radius:5px;font-weight:600;transition:0.3s;}
+header nav a:hover{background:#ffcf33;color:#000;}
 
-    header {
-        background: #022c43;
-        color: white;
-        padding: 15px 20px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    header .logo {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-    }
-
-    header img {
-        width: 50px;
-        border-radius: 10px;
-    }
-
-    header nav a {
-        color: white;
-        text-decoration: none;
-        margin-left: 15px;
-        font-weight: 600;
-        padding: 6px 12px;
-        border-radius: 6px;
-    }
-
-    header nav a:hover {
-        background: #ffcf33;
-        color: black;
-    }
-
-    .container {
-        max-width: 450px;
-        margin: 40px auto;
-        padding: 30px;
-        background: white;
-        border-radius: 15px;
-        box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.08);
-    }
-
-    h2 {
-        text-align: center;
-        font-size: 28px;
-        color: #022c43;
-        margin-bottom: 20px;
-        font-weight: 700;
-    }
-
-    label {
-        margin-top: 12px;
-        font-weight: 600;
-        display: block;
-    }
-
-    input {
-        width: 100%;
-        padding: 13px;
-        margin-top: 5px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        font-size: 15px;
-    }
-
-    button {
-        margin-top: 25px;
-        width: 100%;
-        padding: 14px;
-        border: none;
-        border-radius: 8px;
-        background: #ffcf33;
-        color: #000;
-        font-size: 16px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    button:hover {
-        background: #e6b800;
-    }
-
-    .back {
-        margin-top: 20px;
-        text-align: center;
-    }
-
-    .back a {
-        color: #022c43;
-        font-weight: 600;
-        text-decoration: none;
-    }
+.container{max-width:450px;margin:50px auto;background:white;padding:30px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+h2{text-align:center;font-size:26px;margin-bottom:20px;color:#022c43;}
+label{font-weight:600;margin-top:10px;display:block;}
+input{width:100%;padding:12px;margin-top:5px;border-radius:8px;border:1px solid #ccc;font-size:15px;}
+button{width:100%;background:#ffcf33;padding:14px;border:none;color:#000;margin-top:20px;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;transition:0.3s;}
+button:hover{background:#e6b800;}
+.back{text-align:center;margin-top:20px;}
+.back a{text-decoration:none;color:#022c43;font-weight:600;}
 </style>
 </head>
 <body>
 
 <header>
-    <div class="logo">
-        <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" />
-        <h2 style="margin:0;">Prekebena Family Dynasty</h2>
-    </div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="login.html">Login</a>
-    </nav>
+  <div class="logo">
+    <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Family Logo">
+    <h1>Prekebena Family Dynasty</h1>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="login.html">Login</a>
+  </nav>
 </header>
 
 <div class="container">
-    <h2>Member Registration</h2>
-
-    <form id="regForm">
-        <label>Full Name</label>
-        <input type="text" id="name" required />
-
-        <label>Email Address</label>
-        <input type="email" id="email" required />
-
-        <label>Phone Number</label>
-        <input type="text" id="phone" required />
-
-        <label>Password</label>
-        <input type="password" id="password" required />
-
-        <label>Profile Picture URL (optional)</label>
-        <input type="text" id="profilePicture" placeholder="Enter image URL" />
-
-        <button type="submit">Register</button>
-    </form>
-
-    <div class="back">
-        <a href="login.html">Already have an account? Login</a>
-    </div>
+  <h2>Register</h2>
+  <form id="regForm">
+    <label>Full Name</label><input type="text" id="name" required>
+    <label>Email Address</label><input type="email" id="email" required>
+    <label>Phone Number</label><input type="text" id="phone" required>
+    <label>Password</label><input type="password" id="password" required>
+    <label>Profile Picture URL (optional)</label><input type="text" id="profilePicture" placeholder="Enter image URL">
+    <button type="submit">Register</button>
+  </form>
+  <div class="back">
+    <a href="login.html">Already have an account? Login</a>
+  </div>
 </div>
 
 <script>
 const webAppURL = "https://script.google.com/macros/s/AKfycby1sItf5eLHAcojxuWcVnSF0lQi_6kF9XWNcEypQr8NRzkMfya4bpz_aqjEqWjVFcDO/exec";
 
-document.getElementById("regForm").addEventListener("submit", async (e) => {
+document.getElementById("regForm").addEventListener("submit", async (e)=>{
     e.preventDefault();
 
-    const formData = new URLSearchParams();
-    formData.append("action", "register");
-    formData.append("name", document.getElementById("name").value.trim());
-    formData.append("email", document.getElementById("email").value.trim());
-    formData.append("phone", document.getElementById("phone").value.trim());
-    formData.append("password", document.getElementById("password").value.trim());
-    formData.append("imageUrl", document.getElementById("profilePicture").value.trim());
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const phone = document.getElementById("phone").value.trim();
+    const password = document.getElementById("password").value.trim();
+    const profilePicture = document.getElementById("profilePicture").value.trim();
 
-    Swal.fire({ title: "Please wait...", allowOutsideClick: false, didOpen: () => Swal.showLoading() });
+    if(!name||!email||!phone||!password){
+        Swal.fire({icon:'error',title:'Missing Fields',text:'Please fill all required fields.'});
+        return;
+    }
 
-    try {
-        const response = await fetch(webAppURL, {
-            method: "POST",
-            body: formData,
-            headers: { "Content-Type": "application/x-www-form-urlencoded" }
-        });
+    const form = new URLSearchParams();
+    form.append("action","register");
+    form.append("name",name);
+    form.append("email",email);
+    form.append("phone",phone);
+    form.append("password",password);
+    form.append("imageUrl",profilePicture);
 
-        const result = await response.json();
+    try{
+        const res = await fetch(webAppURL,{method:"POST",body:form,headers:{"Content-Type":"application/x-www-form-urlencoded"}});
+        const data = await res.json();
 
-        if (result.status === "success") {
-            Swal.fire({
-                icon: "success",
-                title: "Registration Successful!",
-                text: "Redirecting...",
-                timer: 2000,
-                showConfirmButton: false
-            });
-
-            setTimeout(() => (window.location.href = "login.html"), 2000);
-        } else if (result.status === "exists") {
-            Swal.fire({ icon: "warning", title: "Email Already Exists", text: result.message });
-        } else {
-            Swal.fire({ icon: "error", title: "Error", text: "Registration failed. Try again." });
+        if(data.status==="success"){
+            sessionStorage.setItem("registrationSuccess","true");
+            Swal.fire({icon:'success',title:'Registration Successful!',text:'Redirecting to login...',timer:2500,showConfirmButton:false});
+            setTimeout(()=>{ window.location.href="login.html"; },2500);
+        } else if(data.status==="exists"){
+            Swal.fire({icon:'warning',title:'Email Exists',text:data.message});
+        } else{
+            Swal.fire({icon:'error',title:'Error',text:'Something went wrong. Try again.'});
         }
-    } catch (error) {
-        Swal.fire({ icon: "error", title: "Network Error", text: "Could not connect to server." });
+    }catch(err){
+        console.error(err);
+        Swal.fire({icon:'error',title:'Connection Error',text:'Cannot reach server. Try later.'});
     }
 });
 </script>
