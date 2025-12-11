@@ -6,58 +6,67 @@
 <title>Register - Prekebena Family Dynasty</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
 <style>
-body{font-family:'Inter',sans-serif;margin:0;padding:0;background:#f4f4f4;}
-header{background:#022c43;color:white;padding:15px 20px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;}
-header .logo{display:flex;align-items:center;gap:15px;}
-header .logo img{width:50px;border-radius:8px;}
-header h1{font-size:20px;margin:0;font-weight:700;}
-header nav a{color:white;text-decoration:none;margin-left:15px;padding:6px 12px;border-radius:5px;font-weight:600;transition:0.3s;}
-header nav a:hover{background:#ffcf33;color:#000;}
+body { font-family:'Inter',sans-serif; margin:0; padding:0; background:#f4f4f4; }
+header { background:#022c43; color:white; padding:15px 20px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; }
+header .logo { display:flex; align-items:center; gap:12px; }
+header .logo img { width:50px; border-radius:8px; }
+header h1 { margin:0; font-size:20px; font-weight:700; }
+header nav a { color:white; text-decoration:none; margin-left:15px; padding:6px 12px; border-radius:5px; font-weight:600; transition:0.3s; }
+header nav a:hover { background:#ffcf33; color:#000; }
 
-.container{max-width:450px;margin:50px auto;background:white;padding:30px;border-radius:12px;box-shadow:0 4px 15px rgba(0,0,0,0.1);}
-h2{text-align:center;font-size:26px;margin-bottom:20px;color:#022c43;}
-label{font-weight:600;margin-top:10px;display:block;}
-input{width:100%;padding:12px;margin-top:5px;border-radius:8px;border:1px solid #ccc;font-size:15px;}
-button{width:100%;background:#ffcf33;padding:14px;border:none;color:#000;margin-top:20px;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;transition:0.3s;}
-button:hover{background:#e6b800;}
-.back{text-align:center;margin-top:20px;}
-.back a{text-decoration:none;color:#022c43;font-weight:600;}
+.container { max-width:450px; margin:50px auto; background:white; padding:30px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+h2 { text-align:center; font-size:26px; margin-bottom:20px; color:#022c43; }
+label { font-weight:600; margin-top:10px; display:block; }
+input { width:100%; padding:12px; margin-top:5px; border-radius:8px; border:1px solid #ccc; font-size:15px; }
+button { width:100%; background:#ffcf33; padding:14px; border:none; color:#000; margin-top:20px; border-radius:8px; font-size:16px; font-weight:600; cursor:pointer; transition:0.3s; }
+button:hover { background:#e6b800; }
+.back { text-align:center; margin-top:20px; }
+.back a { text-decoration:none; color:#022c43; font-weight:600; }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo">
-    <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Family Logo">
-    <h1>Prekebena Family Dynasty</h1>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="login.html">Login</a>
-  </nav>
+    <div class="logo">
+        <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Family Logo">
+        <h1>Prekebena Family Dynasty</h1>
+    </div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+    </nav>
 </header>
 
 <div class="container">
-  <h2>Register</h2>
-  <form id="regForm">
-    <label>Full Name</label><input type="text" id="name" required>
-    <label>Email Address</label><input type="email" id="email" required>
-    <label>Phone Number</label><input type="text" id="phone" required>
-    <label>Password</label><input type="password" id="password" required>
-    <label>Profile Picture URL (optional)</label><input type="text" id="profilePicture" placeholder="Enter image URL">
-    <button type="submit">Register</button>
-  </form>
-  <div class="back">
-    <a href="login.html">Already have an account? Login</a>
-  </div>
+    <h2>Register</h2>
+    <form id="regForm">
+        <label>Full Name</label>
+        <input type="text" id="name" required>
+
+        <label>Email Address</label>
+        <input type="email" id="email" required>
+
+        <label>Phone Number</label>
+        <input type="text" id="phone" required>
+
+        <label>Password</label>
+        <input type="password" id="password" required>
+
+        <label>Profile Picture URL (optional)</label>
+        <input type="text" id="profilePicture" placeholder="Enter image URL">
+
+        <button type="submit">Register</button>
+    </form>
+    <div class="back">
+        <a href="login.html">Already have an account? Login</a>
+    </div>
 </div>
 
 <script>
-const webAppURL = "https://script.google.com/macros/s/AKfycby1sItf5eLHAcojxuWcVnSF0lQi_6kF9XWNcEypQr8NRzkMfya4bpz_aqjEqWjVFcDO/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycby1sItf5eLHAcojxuWcVnSF0lQi_6kF9XWNcEypQr8NRzkMfya4bpz_aqjEqWjVFcDO/exec";
 
-document.getElementById("regForm").addEventListener("submit", async (e)=>{
+document.getElementById("regForm").addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const name = document.getElementById("name").value.trim();
@@ -66,8 +75,8 @@ document.getElementById("regForm").addEventListener("submit", async (e)=>{
     const password = document.getElementById("password").value.trim();
     const profilePicture = document.getElementById("profilePicture").value.trim();
 
-    if(!name||!email||!phone||!password){
-        Swal.fire({icon:'error',title:'Missing Fields',text:'Please fill all required fields.'});
+    if(!name || !email || !phone || !password){
+        Swal.fire({ icon:'error', title:'Missing Fields', text:'Please fill all required fields.' });
         return;
     }
 
@@ -80,21 +89,26 @@ document.getElementById("regForm").addEventListener("submit", async (e)=>{
     form.append("imageUrl",profilePicture);
 
     try{
-        const res = await fetch(webAppURL,{method:"POST",body:form,headers:{"Content-Type":"application/x-www-form-urlencoded"}});
+        const res = await fetch(SCRIPT_URL,{
+            method:"POST",
+            body:form,
+            headers:{"Content-Type":"application/x-www-form-urlencoded"}
+        });
         const data = await res.json();
 
         if(data.status==="success"){
-            sessionStorage.setItem("registrationSuccess","true");
-            Swal.fire({icon:'success',title:'Registration Successful!',text:'Redirecting to login...',timer:2500,showConfirmButton:false});
-            setTimeout(()=>{ window.location.href="login.html"; },2500);
+            Swal.fire({ icon:'success', title:'Registration Successful!', text:'Redirecting to your dashboard...', timer:2500, showConfirmButton:false });
+            // Save member data and redirect
+            sessionStorage.setItem("memberData", JSON.stringify({name,email,phone,imageUrl:profilePicture}));
+            setTimeout(()=>{ window.location.href="membership.html"; },2500);
         } else if(data.status==="exists"){
-            Swal.fire({icon:'warning',title:'Email Exists',text:data.message});
+            Swal.fire({ icon:'warning', title:'Email Exists', text:data.message });
         } else{
-            Swal.fire({icon:'error',title:'Error',text:'Something went wrong. Try again.'});
+            Swal.fire({ icon:'error', title:'Error', text:'Something went wrong. Try again.' });
         }
-    }catch(err){
+    } catch(err){
         console.error(err);
-        Swal.fire({icon:'error',title:'Connection Error',text:'Cannot reach server. Try later.'});
+        Swal.fire({ icon:'error', title:'Connection Error', text:'Cannot reach server. Try later.' });
     }
 });
 </script>
