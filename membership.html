@@ -4,97 +4,262 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Member Dashboard - Prekebena Family Dynasty</title>
-<link rel="stylesheet" href="styles.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <style>
-    body { font-family:'Inter', sans-serif; margin:0; padding:0; background:#f8f9fc; }
-    header { background:#022c43; color:white; padding:20px 10px; text-align:center; }
-    header h1 { margin:0; font-size:24px; }
-    .container { max-width:900px; margin:40px auto; background:white; padding:30px; border-radius:12px; box-shadow:0 4px 15px rgba(0,0,0,0.1); }
-    .profile { display:flex; align-items:center; gap:20px; margin-bottom:30px; }
-    .profile img { width:100px; height:100px; border-radius:50%; border:2px solid #ffcf33; object-fit:cover; }
-    .profile-info { line-height:1.6; }
-    .profile-info h2 { margin:0; color:#022c43; }
-    .profile-info p { margin:2px 0; font-weight:500; }
-    h3 { color:#022c43; margin-top:20px; border-left:4px solid #ffcf33; padding-left:10px; }
-    ul { list-style:none; padding-left:0; }
-    li { background:#f4f7f9; margin-bottom:8px; padding:10px; border-radius:6px; }
-    button { padding:10px 20px; background:#ffcf33; border:none; border-radius:6px; font-weight:bold; cursor:pointer; margin-top:20px; }
-    button:hover { background:#e6b800; }
-    footer { text-align:center; padding:15px; margin-top:40px; background:#022c43; color:white; font-weight:600; }
+    body {
+        margin: 0;
+        background: #f4f4f4;
+        font-family: 'Inter', sans-serif;
+    }
+
+    header {
+        background: #022c43;
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    header .logo {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    header img {
+        width: 45px;
+        border-radius: 10px;
+    }
+
+    header h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+    }
+
+    header button {
+        background: #ffcf33;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 6px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 20px;
+    }
+
+    .section {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        margin-bottom: 25px;
+        box-shadow: 0px 6px 20px rgba(0,0,0,0.05);
+    }
+
+    h3 {
+        margin-top: 0;
+        color: #022c43;
+    }
+
+    .profile-box {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+    }
+
+    .profile-box img {
+        width: 90px;
+        height: 90px;
+        border-radius: 12px;
+        object-fit: cover;
+        border: 2px solid #022c43;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+    }
+
+    th, td {
+        padding: 12px;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+    }
+
+    th {
+        background: #022c43;
+        color: white;
+        text-align: left;
+    }
+
+    @media (max-width: 600px) {
+        .profile-box {
+            flex-direction: column;
+            text-align: center;
+        }
+    }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>Prekebena Family Dynasty</h1>
-    <p>“Together we rise, together we thrive.”</p>
+    <div class="logo">
+        <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg">
+        <h2>Member Dashboard</h2>
+    </div>
+    <button onclick="logout()">Logout</button>
 </header>
 
 <div class="container">
-    <div class="profile">
-        <img id="profileImage" src="" alt="Profile Picture">
-        <div class="profile-info">
-            <h2 id="memberName"></h2>
-            <p><strong>Email:</strong> <span id="memberEmail"></span></p>
-            <p><strong>Phone:</strong> <span id="memberPhone"></span></p>
-            <p><strong>Role:</strong> <span id="memberRole"></span></p>
+
+    <!-- PROFILE SECTION -->
+    <div class="section">
+        <h3>Your Profile</h3>
+        <div class="profile-box">
+            <img id="profilePicture" src="">
+            <div>
+                <p><strong>Name:</strong> <span id="memberName"></span></p>
+                <p><strong>Email:</strong> <span id="memberEmail"></span></p>
+                <p><strong>Phone:</strong> <span id="memberPhone"></span></p>
+            </div>
         </div>
     </div>
 
-    <h3>Membership Details</h3>
-    <ul>
-        <li><strong>Registration Fee:</strong> ₦5,000</li>
-        <li><strong>Monthly Contribution:</strong> ₦2,000</li>
-        <li><strong>Special Dues:</strong> 0</li>
-    </ul>
+    <!-- DUES HISTORY -->
+    <div class="section">
+        <h3>Monthly Dues History</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Month</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Updated By</th>
+                </tr>
+            </thead>
+            <tbody id="duesTable"></tbody>
+        </table>
+    </div>
 
-    <h3>Announcements</h3>
-    <ul id="announcements">
-        <li>No announcements yet.</li>
-    </ul>
+    <!-- ANNOUNCEMENTS -->
+    <div class="section">
+        <h3>Announcements</h3>
+        <div id="announcementBox">Loading...</div>
+    </div>
 
-    <button id="logoutBtn">Logout</button>
+    <!-- UPCOMING EVENTS -->
+    <div class="section">
+        <h3>Upcoming Events</h3>
+        <div id="eventsBox">Loading...</div>
+    </div>
+
 </div>
 
-<footer>
-    2025 Prekebena Family Dynasty
-</footer>
-
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    const memberData = sessionStorage.getItem("memberData");
+const webAppURL = "https://script.google.com/macros/s/AKfycbxshlsikSEyPsi6YRcpNy3oRCxtAh325PTCgqgWz5f_Jst-RfPvhYJf9ulMiywzmI7i/exec";
 
-    if(!memberData){
-        Swal.fire({icon:'info', title:'Not Logged In', text:'Please login first.', timer:2000, showConfirmButton:false});
-        setTimeout(()=>{ window.location.href="login.html"; },2000);
-        return;
-    }
+// -----------------------------------------------------
+// 1. REDIRECT IF NOT LOGGED IN
+// -----------------------------------------------------
+const user = sessionStorage.getItem("memberData");
+if (!user) {
+    window.location.href = "login.html";
+}
 
-    const data = JSON.parse(memberData);
+const userData = JSON.parse(user);
 
-    // Fill member info
-    document.getElementById("memberName").innerText = data.name;
-    document.getElementById("memberEmail").innerText = data.email;
-    document.getElementById("memberPhone").innerText = data.phone;
-    document.getElementById("memberRole").innerText = data.role;
-    document.getElementById("profileImage").src = data.image || "assets/default-avatar.png";
+// Fill profile data
+document.getElementById("memberName").textContent = userData.name;
+document.getElementById("memberEmail").textContent = userData.email;
+document.getElementById("memberPhone").textContent = userData.phone;
+document.getElementById("profilePicture").src =
+    userData.imageUrl && userData.imageUrl !== "" ? userData.imageUrl : "assets/user.png";
 
-    // Example announcements (can fetch dynamically later)
-    const announcementsList = document.getElementById("announcements");
-    announcementsList.innerHTML = `
-        <li>Welcome to the Prekebena Family Dynasty portal!</li>
-        <li>Next family meeting: 20th December 2025.</li>
-        <li>Don't forget to pay your monthly contribution.</li>
-    `;
+// -----------------------------------------------------
+// 2. LOAD DUES HISTORY
+// -----------------------------------------------------
+async function loadDues() {
+    const params = new URLSearchParams();
+    params.append("action", "getDues");
+    params.append("email", userData.email);
 
-    // Logout
-    document.getElementById("logoutBtn").addEventListener("click", () => {
-        sessionStorage.removeItem("memberData");
-        Swal.fire({icon:'success', title:'Logged Out', text:'Redirecting to home...', timer:1500, showConfirmButton:false});
-        setTimeout(()=>{ window.location.href="index.html"; },1500);
+    const res = await fetch(webAppURL, { method: "POST", body: params });
+    const json = await res.json();
+
+    const table = document.getElementById("duesTable");
+    table.innerHTML = "";
+
+    json.forEach(row => {
+        table.innerHTML += `
+            <tr>
+                <td>${row.month}</td>
+                <td>${row.amount}</td>
+                <td>${row.status}</td>
+                <td>${row.updatedBy}</td>
+            </tr>
+        `;
     });
-});
+}
+
+// -----------------------------------------------------
+// 3. LOAD ANNOUNCEMENTS
+// -----------------------------------------------------
+async function loadAnnouncements() {
+    const params = new URLSearchParams();
+    params.append("action", "getAnnouncements");
+
+    const res = await fetch(webAppURL, { method: "POST", body: params });
+    const json = await res.json();
+
+    const box = document.getElementById("announcementBox");
+    box.innerHTML = "";
+
+    json.forEach(a => {
+        box.innerHTML += `<p>📢 <strong>${a.title}</strong><br>${a.message}</p><hr>`;
+    });
+}
+
+// -----------------------------------------------------
+// 4. LOAD EVENTS
+// -----------------------------------------------------
+async function loadEvents() {
+    const params = new URLSearchParams();
+    params.append("action", "getEvents");
+
+    const res = await fetch(webAppURL, { method: "POST", body: params });
+    const json = await res.json();
+
+    const box = document.getElementById("eventsBox");
+    box.innerHTML = "";
+
+    json.forEach(e => {
+        box.innerHTML += `<p>📅 <strong>${e.title}</strong><br>${e.date}</p><hr>`;
+    });
+}
+
+// -----------------------------------------------------
+// 5. LOAD EVERYTHING
+// -----------------------------------------------------
+loadDues();
+loadAnnouncements();
+loadEvents();
+
+// -----------------------------------------------------
+// 6. LOGOUT
+// -----------------------------------------------------
+function logout() {
+    sessionStorage.clear();
+    window.location.href = "login.html";
+}
 </script>
 
 </body>
