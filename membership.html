@@ -17,176 +17,21 @@ header nav a:hover{background:#ffcf33;color:#000;}
 
 .container{max-width:960px;margin:30px auto;padding:0 15px;}
 h2{color:#022c43;font-size:22px;margin-bottom:15px;border-left:5px solid #ffcf33;padding-left:10px;}
-section{margin-bottom:30px;}
-.profile-card{display:flex;align-items:center;background:white;padding:20px;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);}
-.profile-card img{width:80px;height:80px;border-radius:50%;margin-right:20px;}
-.profile-card div p{margin:5px 0;}
-.table-container{overflow-x:auto;background:white;padding:20px;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);}
-table{width:100%;border-collapse:collapse;}
-table th, table td{padding:12px;border-bottom:1px solid #ddd;text-align:left;}
-table th{background:#ffcf33;color:#000;}
-.news-section,.events-section{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;}
-.news-card,.event-card{background:white;padding:20px;border-radius:10px;box-shadow:0 3px 10px rgba(0,0,0,0.1);transition:0.3s;}
-.news-card:hover,.event-card:hover{transform:translateY(-5px);box-shadow:0 6px 15px rgba(0,0,0,0.15);}
-.news-card h3,.event-card h3{margin-top:0;font-size:18px;color:#007bff;}
-.news-card p,.event-card p{font-size:14px;}
 
-button.logout{background:#ff4d4d;color:white;padding:10px 20px;border:none;border-radius:6px;cursor:pointer;font-weight:600;float:right;margin-top:-60px;}
-button.logout:hover{background:#e60000;}
+.tabs{display:flex;flex-wrap:wrap;margin-bottom:20px;}
+.tab{flex:1;text-align:center;padding:12px 0;background:#fff;margin-right:5px;border-radius:8px;cursor:pointer;transition:0.3s;font-weight:600;}
+.tab.active{background:#ffcf33;color:#000;}
+.tab:hover{background:#e6b800;color:#000;}
 
-@media(max-width:600px){.profile-card{flex-direction:column;align-items:flex-start;}.profile-card img{margin-bottom:10px;}}
-</style>
-</head>
-<body>
+.tab-content{background:white;padding:20px;border-radius:12px;box-shadow:0 3px 15px rgba(0,0,0,0.1);}
 
-<header>
-  <div class="logo">
-    <img src="assets/WhatsApp Image 2025-12-10 at 11.28.12 AM.jpeg" alt="Family Logo">
-    <h1>Prekebena Family Dynasty</h1>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <button class="logout" id="logoutBtn">Logout</button>
-  </nav>
-</header>
+/* Profile Section */
+.profile { display:flex; flex-wrap:wrap; gap:20px; align-items:center; }
+.profile img { width:120px; border-radius:50%; border:2px solid #ffcf33; }
+.profile-info { flex:1; min-width:200px; }
+.profile-info p { margin:6px 0; font-weight:500; }
 
-<div class="container">
-  <!-- Profile Info -->
-  <section>
-    <h2>My Profile</h2>
-    <div class="profile-card" id="profile-card">
-      <img src="assets/placeholder.png" alt="Profile Picture" id="profile-img">
-      <div>
-        <p><strong>Name:</strong> <span id="profile-name"></span></p>
-        <p><strong>Email:</strong> <span id="profile-email"></span></p>
-        <p><strong>Phone:</strong> <span id="profile-phone"></span></p>
-        <p><strong>Role:</strong> <span id="profile-role"></span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Monthly Dues History -->
-  <section>
-    <h2>Monthly Contributions</h2>
-    <div class="table-container">
-      <table id="duesTable">
-        <thead>
-          <tr>
-            <th>Month/Year</th>
-            <th>Registration Fee</th>
-            <th>Monthly Contribution</th>
-            <th>Special Dues</th>
-            <th>Notes</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td colspan="5">Loading...</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- Announcements -->
-  <section>
-    <h2>Announcements</h2>
-    <div class="news-section" id="announcements">
-      <p>Loading announcements...</p>
-    </div>
-  </section>
-
-  <!-- Upcoming Events -->
-  <section>
-    <h2>Upcoming Events</h2>
-    <div class="events-section" id="events">
-      <p>Loading events...</p>
-    </div>
-  </section>
-</div>
-
-<script>
-const webAppURL = "https://script.google.com/macros/s/AKfycby1sItf5eLHAcojxuWcVnSF0lQi_6kF9XWNcEypQr8NRzkMfya4bpz_aqjEqWjVFcDO/exec";
-
-// Logout
-document.getElementById("logoutBtn").addEventListener("click", () => {
-  sessionStorage.removeItem("memberData");
-  window.location.href = "login.html";
-});
-
-// Check if user is logged in
-const memberData = JSON.parse(sessionStorage.getItem("memberData"));
-if(!memberData){
-    Swal.fire({icon:'warning',title:'Not Logged In',text:'Please login first.'}).then(()=>{window.location.href="login.html";});
-}
-
-// Fill profile info
-document.getElementById("profile-name").innerText = memberData.name || '';
-document.getElementById("profile-email").innerText = memberData.email || '';
-document.getElementById("profile-phone").innerText = memberData.phone || '';
-document.getElementById("profile-role").innerText = memberData.role || '';
-document.getElementById("profile-img").src = memberData.imageUrl || 'assets/placeholder.png';
-
-// Fetch dues, announcements, events
-async function fetchData(type){
-    try{
-        const params = new URLSearchParams();
-        params.append("action",type);
-        params.append("email",memberData.email);
-
-        const res = await fetch(webAppURL,{method:"POST",body:params, headers:{"Content-Type":"application/x-www-form-urlencoded"}});
-        const data = await res.json();
-
-        return data;
-    }catch(err){
-        console.error(err);
-        return [];
-    }
-}
-
-// Populate dues
-fetchData('get_dues').then(dues=>{
-    const tbody = document.querySelector("#duesTable tbody");
-    tbody.innerHTML = '';
-    if(dues.length===0){
-        tbody.innerHTML = '<tr><td colspan="5">No records found.</td></tr>';
-    }else{
-        dues.forEach(d=>{
-            tbody.innerHTML += `<tr>
-                <td>${d.MonthYear || ''}</td>
-                <td>${d['Registration Fee'] || ''}</td>
-                <td>${d['Monthly Contribution'] || ''}</td>
-                <td>${d['Special Dues'] || ''}</td>
-                <td>${d.Notes || ''}</td>
-            </tr>`;
-        });
-    }
-});
-
-// Populate announcements
-fetchData('get_announcements').then(news=>{
-    const container = document.getElementById("announcements");
-    container.innerHTML = '';
-    if(news.length===0){
-        container.innerHTML = '<p>No announcements.</p>';
-    }else{
-        news.forEach(n=>{
-            container.innerHTML += `<div class="news-card"><h3>${n.Caption}</h3><p>${n.Body}</p></div>`;
-        });
-    }
-});
-
-// Populate events
-fetchData('get_events').then(events=>{
-    const container = document.getElementById("events");
-    container.innerHTML = '';
-    if(events.length===0){
-        container.innerHTML = '<p>No upcoming events.</p>';
-    }else{
-        events.forEach(ev=>{
-            container.innerHTML += `<div class="event-card"><h3>${ev.Caption}</h3><p>${ev.Body}</p><p><strong>Date:</strong> ${ev.DateTime || ''}</p></div>`;
-        });
-    }
-});
-</script>
-
-</body>
-</html>
+/* Tables */
+table{width:100%;border-collapse:collapse;margin-top:10px;}
+th,td{padding:10px;text-align:left;border-bottom:1px solid #ccc;}
+th{background:#ffcf33;color:#000;}
